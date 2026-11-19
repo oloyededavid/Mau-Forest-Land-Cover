@@ -8,4 +8,4 @@ pillow>=10.0
 matplotlib>=3.8
 pystac-client>=0.7
 planetary-computer>=1.0
-spatial-stats-core @ git+https://github.com/oloyededavid/spatial-stats-core
+spatial-stats-core @ git+https://github.com/oloyededavid/spatial-stats-core@fe06c96909df67f8fb82d8f983bdb5ff3c004fd9

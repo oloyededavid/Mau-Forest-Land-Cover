@@ -5,7 +5,7 @@ Schemes: random stratified 5-fold, and spatial block 5-fold (spatial_stats_core.
 class over blocks) with square blocks of 5, 10 and 20 km on the UTM grid. Out-of-fold predictions are pooled over
 the five folds before computing precision, recall and accuracy.
 
-Class decision (fixed before running): plantation forest stays a separate class only if, under 10 km blocked CV
+Class decision (a rule written into this code before cross-validation was run; not pre-registered): plantation forest stays a separate class only if, under 10 km blocked CV
 with the random forest, both its precision and its recall reach 0.70. Otherwise its samples are relabelled as
 forest. A candidate class with no training cells is dropped. The final scheme is then cross-validated again.
 

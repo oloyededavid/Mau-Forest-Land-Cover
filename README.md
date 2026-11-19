@@ -23,9 +23,9 @@ A land-cover map of a box around the Mau Forest Complex for 2025, made with a ra
 | Elevation, slope | Copernicus DEM GLO-30 | Planetary Computer (`cop-dem-glo-30`) |
 | Labels and comparison | ESA WorldCover 10 m 2021 v200 (Zanaga et al., 2022) | Planetary Computer (`esa-worldcover`) |
 | Labels and comparison | Esri / Impact Observatory annual land cover 2023 (Karra et al., 2021) | Planetary Computer (`io-lulc-annual-v02`) |
-| Plantation labels | Global forest management map 2015 (Lesiv et al., 2022, doi:10.5281/zenodo.5879022) | Zenodo |
+| Plantation labels | Global forest management map 2015 (Lesiv et al., 2022, *Scientific Data*; data on Zenodo, 2021, file v3.2, doi:10.5281/zenodo.5879022) | Zenodo |
 | Forest loss context | Hansen Global Forest Change v1.12, tile 00N_030E (Hansen et al., 2013) | Google Cloud Storage |
-| Reference search | Geo-Wiki 2011–2012 (Fritz et al., 2017, doi:10.1594/PANGAEA.869682); Geo-Wiki 2015 at 10 m (Lesiv et al., 2025, doi:10.5281/zenodo.14871660) | Zenodo |
+| Reference search | Geo-Wiki 2011–2012 (Fritz et al., 2016, doi:10.1594/PANGAEA.869682); Geo-Wiki 2015 at 10 m (Lesiv et al., 2025, doi:10.5281/zenodo.14871660) | Zenodo |
 
 ## Reproduce
 

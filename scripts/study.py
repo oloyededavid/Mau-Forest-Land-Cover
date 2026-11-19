@@ -69,7 +69,7 @@ def box_mask(transform, width, height):
 # ESA WorldCover 2021 v200 and the Esri / Impact Observatory annual land cover (io-lulc-annual-v02).
 # Codes: WorldCover 10 tree, 20 shrub, 30 grass, 40 crop, 50 built, 60 bare, 80 water, 90 wetland, 95 mangrove;
 # Esri 1 water, 2 trees, 4 flooded vegetation, 5 crops, 7 built area, 8 bare ground, 11 rangeland.
-# The plantation class is decided in scripts/s05_classify.py from what the data separate (see outputs/classes.json).
+# The plantation class is decided in scripts/s04_cv.py from what the data separate (see outputs/classes.json).
 CANDIDATE_CLASSES = {
     1: {"name": "Forest", "worldcover": [10], "esri": [2], "colour": "#1f6b35"},
     2: {"name": "Plantation forest", "worldcover": [10], "esri": [2], "colour": "#8cbf3f"},
