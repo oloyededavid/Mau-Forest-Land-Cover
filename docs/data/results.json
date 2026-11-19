@@ -1,0 +1,2015 @@
+{
+ "accuracy": {
+  "status": "pending",
+  "n_sample": 644,
+  "n_labelled": 0,
+  "note": "Reference labels are visual interpretation of high-resolution imagery by one interpreter, not field data."
+ },
+ "classes": {
+  "final": [
+   {
+    "code": 1,
+    "name": "Forest (natural and plantation)",
+    "colour": "#1f6b35"
+   },
+   {
+    "code": 3,
+    "name": "Cropland and grassland",
+    "colour": "#e8d58a"
+   },
+   {
+    "code": 4,
+    "name": "Built-up",
+    "colour": "#c0392b"
+   },
+   {
+    "code": 5,
+    "name": "Water and wetland",
+    "colour": "#2c7fb8"
+   }
+  ],
+  "dropped": {
+   "Bare": "no training cells where both maps agree in a uniform 3 x 3 neighbourhood"
+  },
+  "plantation_decision": {
+   "rule": "keep if precision and recall >= 0.7 under 10 km blocked CV (random forest)",
+   "threshold": 0.7,
+   "block_km": 10,
+   "precision": 0.8726752503576538,
+   "recall": 0.61,
+   "kept": false
+  }
+ },
+ "comparison": {
+  "compared_km2": 7888.5832,
+  "agree_with_worldcover": 0.8253219919135796,
+  "agree_with_esri": 0.8408862569897215,
+  "agree_with_both": 0.7261516364560876,
+  "agree_with_neither": 0.059943387552786415,
+  "worldcover_agree_with_esri": 0.7688598885538788,
+  "areas_km2": {
+   "Forest (natural and plantation)": {
+    "this_map": 2876.6984,
+    "worldcover2021": 3593.5956,
+    "esri2023": 2375.8512
+   },
+   "Cropland and grassland": {
+    "this_map": 4769.1584,
+    "worldcover2021": 4170.5624,
+    "esri2023": 5020.6452
+   },
+   "Built-up": {
+    "this_map": 191.1312,
+    "worldcover2021": 73.9328,
+    "esri2023": 446.13
+   },
+   "Water and wetland": {
+    "this_map": 51.595200000000006,
+    "worldcover2021": 47.7372,
+    "esri2023": 45.78
+   },
+   "Other (bare, cloud)": {
+    "this_map": 0.0,
+    "worldcover2021": 2.7552000000000003,
+    "esri2023": 0.1768
+   }
+  },
+  "per_class": {
+   "Forest (natural and plantation)": {
+    "share_agreeing_with_worldcover": 0.9058374697882823,
+    "share_agreeing_with_esri": 0.7614947747042234,
+    "share_agreeing_with_both": 0.7242851735864976
+   },
+   "Cropland and grassland": {
+    "share_agreeing_with_worldcover": 0.7961897847637017,
+    "share_agreeing_with_esri": 0.900601582031748,
+    "share_agreeing_with_both": 0.7434146871699627
+   },
+   "Built-up": {
+    "share_agreeing_with_worldcover": 0.32116996073901066,
+    "share_agreeing_with_esri": 0.5368793791908385,
+    "share_agreeing_with_both": 0.28556091313192195
+   },
+   "Water and wetland": {
+    "share_agreeing_with_worldcover": 0.8965795267776847,
+    "share_agreeing_with_esri": 0.8738099668186188,
+    "share_agreeing_with_both": 0.8666620150711694
+   }
+  },
+  "vs_worldcover_km2": {
+   "Forest (natural and plantation)": {
+    "Forest (natural and plantation)": 2605.8212000000003,
+    "Cropland and grassland": 269.6676,
+    "Built-up": 0.36000000000000004,
+    "Water and wetland": 0.8364,
+    "Other (bare, cloud)": 0.0132
+   },
+   "Cropland and grassland": {
+    "Forest (natural and plantation)": 959.1044,
+    "Cropland and grassland": 3797.1552,
+    "Built-up": 12.173200000000001,
+    "Water and wetland": 0.5548000000000001,
+    "Other (bare, cloud)": 0.1708
+   },
+   "Built-up": {
+    "Forest (natural and plantation)": 24.7288,
+    "Cropland and grassland": 102.61200000000001,
+    "Built-up": 61.385600000000004,
+    "Water and wetland": 0.0868,
+    "Other (bare, cloud)": 2.318
+   },
+   "Water and wetland": {
+    "Forest (natural and plantation)": 3.9412000000000003,
+    "Cropland and grassland": 1.1276000000000002,
+    "Built-up": 0.014,
+    "Water and wetland": 46.2592,
+    "Other (bare, cloud)": 0.25320000000000004
+   }
+  },
+  "vs_esri_km2": {
+   "Forest (natural and plantation)": {
+    "Forest (natural and plantation)": 2190.5908,
+    "Cropland and grassland": 635.8788000000001,
+    "Built-up": 49.906400000000005,
+    "Water and wetland": 0.31920000000000004,
+    "Other (bare, cloud)": 0.0032
+   },
+   "Cropland and grassland": {
+    "Forest (natural and plantation)": 180.36520000000002,
+    "Cropland and grassland": 4295.1116,
+    "Built-up": 293.37600000000003,
+    "Water and wetland": 0.2828,
+    "Other (bare, cloud)": 0.0228
+   },
+   "Built-up": {
+    "Forest (natural and plantation)": 2.0596,
+    "Cropland and grassland": 86.2172,
+    "Built-up": 102.6144,
+    "Water and wetland": 0.0936,
+    "Other (bare, cloud)": 0.1464
+   },
+   "Water and wetland": {
+    "Forest (natural and plantation)": 2.8356000000000003,
+    "Cropland and grassland": 3.4376,
+    "Built-up": 0.23320000000000002,
+    "Water and wetland": 45.0844,
+    "Other (bare, cloud)": 0.0044
+   }
+  },
+  "largest_disagreements": [
+   {
+    "this_map": "Cropland and grassland",
+    "worldcover2021": "Forest (natural and plantation)",
+    "esri2023": "Cropland and grassland",
+    "area_km2": 747.022
+   },
+   {
+    "this_map": "Forest (natural and plantation)",
+    "worldcover2021": "Forest (natural and plantation)",
+    "esri2023": "Cropland and grassland",
+    "area_km2": 476.3668
+   },
+   {
+    "this_map": "Cropland and grassland",
+    "worldcover2021": "Cropland and grassland",
+    "esri2023": "Built-up",
+    "area_km2": 163.678
+   },
+   {
+    "this_map": "Forest (natural and plantation)",
+    "worldcover2021": "Cropland and grassland",
+    "esri2023": "Cropland and grassland",
+    "area_km2": 159.18280000000001
+   },
+   {
+    "this_map": "Cropland and grassland",
+    "worldcover2021": "Forest (natural and plantation)",
+    "esri2023": "Built-up",
+    "area_km2": 119.69200000000001
+   },
+   {
+    "this_map": "Forest (natural and plantation)",
+    "worldcover2021": "Cropland and grassland",
+    "esri2023": "Forest (natural and plantation)",
+    "area_km2": 106.46000000000001
+   },
+   {
+    "this_map": "Cropland and grassland",
+    "worldcover2021": "Forest (natural and plantation)",
+    "esri2023": "Forest (natural and plantation)",
+    "area_km2": 92.35640000000001
+   },
+   {
+    "this_map": "Cropland and grassland",
+    "worldcover2021": "Cropland and grassland",
+    "esri2023": "Forest (natural and plantation)",
+    "area_km2": 87.8392
+   }
+  ],
+  "where_worldcover_and_esri_disagree": {
+   "cells_km2": 1823.3680000000002,
+   "with_worldcover": 0.42904866159765886,
+   "with_esri": 0.49638558974381475,
+   "with_neither": 0.07456574865852642
+  },
+  "hansen": {
+   "loss_cells_km2_on_grid": 873.6972000000001,
+   "share_of_loss_2001_2024_mapped_forest_2025": 0.3468922642764564,
+   "share_of_loss_2021_2024_mapped_forest_2025": 0.34381978195192436,
+   "loss_2001_2024_by_class_km2": {
+    "Forest (natural and plantation)": 303.0788,
+    "Cropland and grassland": 562.8212,
+    "Built-up": 7.2828,
+    "Water and wetland": 0.5144000000000001
+   },
+   "treecover2000_ge30_km2": 3577.1956,
+   "treecover2000_ge30_mapped_forest_2025_km2": 2375.3804,
+   "share_mapped_forest_with_treecover2000_ge30": 0.8257314704940915
+  },
+  "lesiv2015_sites": {
+   "n_sites": 21,
+   "dominant_class_matches": 18,
+   "sites": [
+    {
+     "sampleid": 1004357,
+     "lon": 35.93786,
+     "lat": -0.31217,
+     "reference_2015_dominant": "Cropland and grassland",
+     "reference_2015_dominant_share": 0.82,
+     "map_2025_dominant": "Cropland and grassland",
+     "map_2025_dominant_share": 0.88,
+     "forest_share_reference_2015": 0.07,
+     "forest_share_map_2025": 0.04
+    },
+    {
+     "sampleid": 1005195,
+     "lon": 35.31242,
+     "lat": -0.93789,
+     "reference_2015_dominant": "Cropland and grassland",
+     "reference_2015_dominant_share": 0.87,
+     "map_2025_dominant": "Cropland and grassland",
+     "map_2025_dominant_share": 0.88,
+     "forest_share_reference_2015": 0.12,
+     "forest_share_map_2025": 0.12
+    },
+    {
+     "sampleid": 1006063,
+     "lon": 35.31224,
+     "lat": -0.62511,
+     "reference_2015_dominant": "Cropland and grassland",
+     "reference_2015_dominant_share": 1.0,
+     "map_2025_dominant": "Cropland and grassland",
+     "map_2025_dominant_share": 0.64,
+     "forest_share_reference_2015": 0.0,
+     "forest_share_map_2025": 0.36
+    },
+    {
+     "sampleid": 1006310,
+     "lon": 35.68743,
+     "lat": -0.31224,
+     "reference_2015_dominant": "Cropland and grassland",
+     "reference_2015_dominant_share": 0.77,
+     "map_2025_dominant": "Cropland and grassland",
+     "map_2025_dominant_share": 1.0,
+     "forest_share_reference_2015": 0.22,
+     "forest_share_map_2025": 0.0
+    },
+    {
+     "sampleid": 1006739,
+     "lon": 35.37508,
+     "lat": -0.56271,
+     "reference_2015_dominant": "Cropland and grassland",
+     "reference_2015_dominant_share": 0.57,
+     "map_2025_dominant": "Cropland and grassland",
+     "map_2025_dominant_share": 1.0,
+     "forest_share_reference_2015": 0.43,
+     "forest_share_map_2025": 0.0
+    },
+    {
+     "sampleid": 1006832,
+     "lon": 35.81237,
+     "lat": -0.68721,
+     "reference_2015_dominant": "Forest (natural and plantation)",
+     "reference_2015_dominant_share": 0.59,
+     "map_2025_dominant": "Forest (natural and plantation)",
+     "map_2025_dominant_share": 0.76,
+     "forest_share_reference_2015": 0.59,
+     "forest_share_map_2025": 0.76
+    },
+    {
+     "sampleid": 1007149,
+     "lon": 35.31227,
+     "lat": -0.68748,
+     "reference_2015_dominant": "Cropland and grassland",
+     "reference_2015_dominant_share": 0.77,
+     "map_2025_dominant": "Cropland and grassland",
+     "map_2025_dominant_share": 0.76,
+     "forest_share_reference_2015": 0.2,
+     "forest_share_map_2025": 0.2
+    },
+    {
+     "sampleid": 1007509,
+     "lon": 35.68745,
+     "lat": -0.3755,
+     "reference_2015_dominant": "Cropland and grassland",
+     "reference_2015_dominant_share": 0.76,
+     "map_2025_dominant": "Cropland and grassland",
+     "map_2025_dominant_share": 1.0,
+     "forest_share_reference_2015": 0.16,
+     "forest_share_map_2025": 0.0
+    },
+    {
+     "sampleid": 1009086,
+     "lon": 35.68766,
+     "lat": -0.8129,
+     "reference_2015_dominant": "Cropland and grassland",
+     "reference_2015_dominant_share": 0.92,
+     "map_2025_dominant": "Cropland and grassland",
+     "map_2025_dominant_share": 0.96,
+     "forest_share_reference_2015": 0.07,
+     "forest_share_map_2025": 0.04
+    },
+    {
+     "sampleid": 1009105,
+     "lon": 35.6877,
+     "lat": -0.87526,
+     "reference_2015_dominant": "Cropland and grassland",
+     "reference_2015_dominant_share": 0.86,
+     "map_2025_dominant": "Cropland and grassland",
+     "map_2025_dominant_share": 0.92,
+     "forest_share_reference_2015": 0.02,
+     "forest_share_map_2025": 0.08
+    },
+    {
+     "sampleid": 1009395,
+     "lon": 35.75031,
+     "lat": -0.43783,
+     "reference_2015_dominant": "Cropland and grassland",
+     "reference_2015_dominant_share": 0.68,
+     "map_2025_dominant": "Forest (natural and plantation)",
+     "map_2025_dominant_share": 0.56,
+     "forest_share_reference_2015": 0.32,
+     "forest_share_map_2025": 0.56
+    },
+    {
+     "sampleid": 1009769,
+     "lon": 35.31214,
+     "lat": -0.31233,
+     "reference_2015_dominant": "Cropland and grassland",
+     "reference_2015_dominant_share": 0.91,
+     "map_2025_dominant": "Cropland and grassland",
+     "map_2025_dominant_share": 0.88,
+     "forest_share_reference_2015": 0.04,
+     "forest_share_map_2025": 0.12
+    },
+    {
+     "sampleid": 1011113,
+     "lon": 35.9316,
+     "lat": -0.37,
+     "reference_2015_dominant": "Cropland and grassland",
+     "reference_2015_dominant_share": 0.43,
+     "map_2025_dominant": "Cropland and grassland",
+     "map_2025_dominant_share": 0.52,
+     "forest_share_reference_2015": 0.31,
+     "forest_share_map_2025": 0.44
+    },
+    {
+     "sampleid": 1011435,
+     "lon": 36.06573,
+     "lat": -0.30765,
+     "reference_2015_dominant": "Built-up",
+     "reference_2015_dominant_share": 0.82,
+     "map_2025_dominant": "Built-up",
+     "map_2025_dominant_share": 0.96,
+     "forest_share_reference_2015": 0.01,
+     "forest_share_map_2025": 0.0
+    },
+    {
+     "sampleid": 1011548,
+     "lon": 35.8751,
+     "lat": -0.50013,
+     "reference_2015_dominant": "Forest (natural and plantation)",
+     "reference_2015_dominant_share": 0.8,
+     "map_2025_dominant": "Forest (natural and plantation)",
+     "map_2025_dominant_share": 1.0,
+     "forest_share_reference_2015": 0.8,
+     "forest_share_map_2025": 1.0
+    },
+    {
+     "sampleid": 1064469,
+     "lon": 35.6249,
+     "lat": -0.93767,
+     "reference_2015_dominant": "Cropland and grassland",
+     "reference_2015_dominant_share": 1.0,
+     "map_2025_dominant": "Cropland and grassland",
+     "map_2025_dominant_share": 1.0,
+     "forest_share_reference_2015": 0.0,
+     "forest_share_map_2025": 0.0
+    },
+    {
+     "sampleid": 1064519,
+     "lon": 35.62471,
+     "lat": -0.62496,
+     "reference_2015_dominant": "Cropland and grassland",
+     "reference_2015_dominant_share": 0.91,
+     "map_2025_dominant": "Cropland and grassland",
+     "map_2025_dominant_share": 0.88,
+     "forest_share_reference_2015": 0.0,
+     "forest_share_map_2025": 0.12
+    },
+    {
+     "sampleid": 1064567,
+     "lon": 35.62549,
+     "lat": -0.31225,
+     "reference_2015_dominant": "Forest (natural and plantation)",
+     "reference_2015_dominant_share": 0.51,
+     "map_2025_dominant": "Cropland and grassland",
+     "map_2025_dominant_share": 0.56,
+     "forest_share_reference_2015": 0.51,
+     "forest_share_map_2025": 0.44
+    },
+    {
+     "sampleid": 1360783,
+     "lon": 36.09594,
+     "lat": -0.89317,
+     "reference_2015_dominant": "Cropland and grassland",
+     "reference_2015_dominant_share": 1.0,
+     "map_2025_dominant": "Cropland and grassland",
+     "map_2025_dominant_share": 1.0,
+     "forest_share_reference_2015": 0.0,
+     "forest_share_map_2025": 0.0
+    },
+    {
+     "sampleid": 1368663,
+     "lon": 35.97679,
+     "lat": -0.9166,
+     "reference_2015_dominant": "Cropland and grassland",
+     "reference_2015_dominant_share": 1.0,
+     "map_2025_dominant": "Cropland and grassland",
+     "map_2025_dominant_share": 1.0,
+     "forest_share_reference_2015": 0.0,
+     "forest_share_map_2025": 0.0
+    },
+    {
+     "sampleid": 1368726,
+     "lon": 35.39656,
+     "lat": -0.37107,
+     "reference_2015_dominant": "Cropland and grassland",
+     "reference_2015_dominant_share": 0.87,
+     "map_2025_dominant": "Forest (natural and plantation)",
+     "map_2025_dominant_share": 0.68,
+     "forest_share_reference_2015": 0.13,
+     "forest_share_map_2025": 0.68
+    }
+   ],
+   "note": "Descriptive only: 21 sites, reference year 2015, not a sample drawn from this map."
+  }
+ },
+ "composite": {
+  "collection": "sentinel-2-l2a (Microsoft Planetary Computer)",
+  "dates": "2025-01-01/2025-03-31",
+  "max_cloud_pct": 20,
+  "tiles": [
+   "36MYD",
+   "36MYE",
+   "36MZD",
+   "36MZE"
+  ],
+  "n_scenes": 73,
+  "n_acquisitions": 29,
+  "first_date": "2025-01-02",
+  "last_date": "2025-03-31",
+  "scenes_per_tile": {
+   "36MYD": 13,
+   "36MYE": 12,
+   "36MZD": 23,
+   "36MZE": 25
+  },
+  "grid": {
+   "crs": "EPSG:32736",
+   "res_m": 20.0,
+   "width": 4459,
+   "height": 4429,
+   "transform": [
+    20.0,
+    0.0,
+    755960.0,
+    0.0,
+    -20.0,
+    9983420.0
+   ]
+  },
+  "valid_scl": [
+   4,
+   5,
+   6,
+   7
+  ],
+  "clear_count_in_box": {
+   "median": 11.0,
+   "p05": 9.0,
+   "min": 0,
+   "max": 25,
+   "share_zero": 1.5515853450026074e-05,
+   "share_below_3": 5.613088159862373e-05
+  }
+ },
+ "cv": {
+  "n_samples": 20000,
+  "n_splits": 5,
+  "blocks_km": [
+   5,
+   10,
+   20
+  ],
+  "note": "Accuracy against map-agreement labels on uniform cells; not map accuracy.",
+  "candidate_scheme": {
+   "classes": [
+    "Forest",
+    "Plantation forest",
+    "Cropland and grassland",
+    "Built-up",
+    "Water and wetland"
+   ],
+   "results": {
+    "random": {
+     "fold_distances_m": {
+      "min_train_test_distance": 20.0,
+      "mean_fold_median_distance": 72.11102550927978
+     },
+     "test_sizes": [
+      4000,
+      4000,
+      4000,
+      4000,
+      4000
+     ],
+     "models": {
+      "random_forest": {
+       "overall_accuracy": 0.94775,
+       "macro_f1": 0.9477757569710571,
+       "per_class": {
+        "Forest": {
+         "precision": 0.9272445820433437,
+         "recall": 0.8985,
+         "f1": 0.9126460132046724,
+         "n": 4000
+        },
+        "Plantation forest": {
+         "precision": 0.9038272816486752,
+         "recall": 0.921,
+         "f1": 0.912332838038633,
+         "n": 4000
+        },
+        "Cropland and grassland": {
+         "precision": 0.9279518072289157,
+         "recall": 0.96275,
+         "f1": 0.9450306748466257,
+         "n": 4000
+        },
+        "Built-up": {
+         "precision": 0.981543194052807,
+         "recall": 0.95725,
+         "f1": 0.9692443994431085,
+         "n": 4000
+        },
+        "Water and wetland": {
+         "precision": 1.0,
+         "recall": 0.99925,
+         "f1": 0.9996248593222459,
+         "n": 4000
+        }
+       },
+       "confusion_matrix": [
+        [
+         3594,
+         348,
+         58,
+         0,
+         0
+        ],
+        [
+         246,
+         3684,
+         70,
+         0,
+         0
+        ],
+        [
+         35,
+         43,
+         3851,
+         71,
+         0
+        ],
+        [
+         0,
+         1,
+         170,
+         3829,
+         0
+        ],
+        [
+         1,
+         0,
+         1,
+         1,
+         3997
+        ]
+       ],
+       "fold_overall_accuracy": [
+        0.94775,
+        0.9465,
+        0.95175,
+        0.94525,
+        0.9475
+       ]
+      },
+      "gradient_boosting": {
+       "overall_accuracy": 0.9569,
+       "macro_f1": 0.956910041426249,
+       "per_class": {
+        "Forest": {
+         "precision": 0.9330425859415085,
+         "recall": 0.90925,
+         "f1": 0.920992656368701,
+         "n": 4000
+        },
+        "Plantation forest": {
+         "precision": 0.9130434782608695,
+         "recall": 0.9345,
+         "f1": 0.9236471460340994,
+         "n": 4000
+        },
+        "Cropland and grassland": {
+         "precision": 0.9535802469135802,
+         "recall": 0.9655,
+         "f1": 0.9595031055900621,
+         "n": 4000
+        },
+        "Built-up": {
+         "precision": 0.9858621560212067,
+         "recall": 0.97625,
+         "f1": 0.9810325336013064,
+         "n": 4000
+        },
+        "Water and wetland": {
+         "precision": 0.9997498123592694,
+         "recall": 0.999,
+         "f1": 0.9993747655370764,
+         "n": 4000
+        }
+       },
+       "confusion_matrix": [
+        [
+         3637,
+         310,
+         53,
+         0,
+         0
+        ],
+        [
+         220,
+         3738,
+         41,
+         0,
+         1
+        ],
+        [
+         40,
+         43,
+         3862,
+         55,
+         0
+        ],
+        [
+         0,
+         2,
+         93,
+         3905,
+         0
+        ],
+        [
+         1,
+         1,
+         1,
+         1,
+         3996
+        ]
+       ],
+       "fold_overall_accuracy": [
+        0.95775,
+        0.95625,
+        0.96175,
+        0.95475,
+        0.954
+       ]
+      }
+     }
+    },
+    "block_5km": {
+     "fold_distances_m": {
+      "min_train_test_distance": 20.0,
+      "mean_fold_median_distance": 1299.424774857695
+     },
+     "test_sizes": [
+      4815,
+      4735,
+      3557,
+      3567,
+      3326
+     ],
+     "models": {
+      "random_forest": {
+       "overall_accuracy": 0.8499,
+       "macro_f1": 0.8414314295418388,
+       "per_class": {
+        "Forest": {
+         "precision": 0.6274814431210081,
+         "recall": 0.90875,
+         "f1": 0.7423669968344736,
+         "n": 4000
+        },
+        "Plantation forest": {
+         "precision": 0.8344465648854962,
+         "recall": 0.43725,
+         "f1": 0.5738188976377953,
+         "n": 4000
+        },
+        "Cropland and grassland": {
+         "precision": 0.9070921985815603,
+         "recall": 0.95925,
+         "f1": 0.9324422843256379,
+         "n": 4000
+        },
+        "Built-up": {
+         "precision": 0.9732234809474768,
+         "recall": 0.945,
+         "f1": 0.958904109589041,
+         "n": 4000
+        },
+        "Water and wetland": {
+         "precision": 1.0,
+         "recall": 0.99925,
+         "f1": 0.9996248593222459,
+         "n": 4000
+        }
+       },
+       "confusion_matrix": [
+        [
+         3635,
+         305,
+         60,
+         0,
+         0
+        ],
+        [
+         2122,
+         1749,
+         113,
+         16,
+         0
+        ],
+        [
+         35,
+         41,
+         3837,
+         87,
+         0
+        ],
+        [
+         0,
+         1,
+         219,
+         3780,
+         0
+        ],
+        [
+         1,
+         0,
+         1,
+         1,
+         3997
+        ]
+       ],
+       "fold_overall_accuracy": [
+        0.899896157840083,
+        0.8623020063357972,
+        0.8633680067472589,
+        0.8906644238856182,
+        0.7017438364401684
+       ]
+      },
+      "gradient_boosting": {
+       "overall_accuracy": 0.8489,
+       "macro_f1": 0.8377277106613485,
+       "per_class": {
+        "Forest": {
+         "precision": 0.614,
+         "recall": 0.921,
+         "f1": 0.7368,
+         "n": 4000
+        },
+        "Plantation forest": {
+         "precision": 0.8360742705570292,
+         "recall": 0.394,
+         "f1": 0.5355989804587935,
+         "n": 4000
+        },
+        "Cropland and grassland": {
+         "precision": 0.9219942748091603,
+         "recall": 0.96625,
+         "f1": 0.943603515625,
+         "n": 4000
+        },
+        "Built-up": {
+         "precision": 0.9824338085539714,
+         "recall": 0.96475,
+         "f1": 0.9735116044399597,
+         "n": 4000
+        },
+        "Water and wetland": {
+         "precision": 0.9997496871088861,
+         "recall": 0.9985,
+         "f1": 0.9991244527829893,
+         "n": 4000
+        }
+       },
+       "confusion_matrix": [
+        [
+         3684,
+         265,
+         51,
+         0,
+         0
+        ],
+        [
+         2275,
+         1576,
+         134,
+         14,
+         1
+        ],
+        [
+         40,
+         41,
+         3865,
+         54,
+         0
+        ],
+        [
+         0,
+         1,
+         140,
+         3859,
+         0
+        ],
+        [
+         1,
+         2,
+         2,
+         1,
+         3994
+        ]
+       ],
+       "fold_overall_accuracy": [
+        0.8982346832814122,
+        0.8473072861668427,
+        0.8675850435760473,
+        0.8937482478273059,
+        0.711665664461816
+       ]
+      }
+     }
+    },
+    "block_10km": {
+     "fold_distances_m": {
+      "min_train_test_distance": 28.284271247461902,
+      "mean_fold_median_distance": 2815.7107802557734
+     },
+     "test_sizes": [
+      6803,
+      4773,
+      2886,
+      2670,
+      2868
+     ],
+     "models": {
+      "random_forest": {
+       "overall_accuracy": 0.88035,
+       "macro_f1": 0.8775767060539714,
+       "per_class": {
+        "Forest": {
+         "precision": 0.7141730731322689,
+         "recall": 0.90575,
+         "f1": 0.7986333076160035,
+         "n": 4000
+        },
+        "Plantation forest": {
+         "precision": 0.8726752503576538,
+         "recall": 0.61,
+         "f1": 0.7180694526191878,
+         "n": 4000
+        },
+        "Cropland and grassland": {
+         "precision": 0.8965759849906192,
+         "recall": 0.95575,
+         "f1": 0.9252178121974831,
+         "n": 4000
+        },
+        "Built-up": {
+         "precision": 0.9640082858622475,
+         "recall": 0.93075,
+         "f1": 0.9470872551513609,
+         "n": 4000
+        },
+        "Water and wetland": {
+         "precision": 0.9982521847690387,
+         "recall": 0.9995,
+         "f1": 0.9988757026858214,
+         "n": 4000
+        }
+       },
+       "confusion_matrix": [
+        [
+         3623,
+         317,
+         59,
+         1,
+         0
+        ],
+        [
+         1409,
+         2440,
+         114,
+         36,
+         1
+        ],
+        [
+         40,
+         35,
+         3823,
+         102,
+         0
+        ],
+        [
+         0,
+         4,
+         267,
+         3723,
+         6
+        ],
+        [
+         1,
+         0,
+         1,
+         0,
+         3998
+        ]
+       ],
+       "fold_overall_accuracy": [
+        0.8884315743054535,
+        0.8946155457783365,
+        0.8617463617463618,
+        0.852808988764045,
+        0.8817991631799164
+       ]
+      },
+      "gradient_boosting": {
+       "overall_accuracy": 0.84595,
+       "macro_f1": 0.8362211203865121,
+       "per_class": {
+        "Forest": {
+         "precision": 0.6256401502219188,
+         "recall": 0.91625,
+         "f1": 0.7435585311422195,
+         "n": 4000
+        },
+        "Plantation forest": {
+         "precision": 0.8373253493013972,
+         "recall": 0.4195,
+         "f1": 0.558960692871419,
+         "n": 4000
+        },
+        "Cropland and grassland": {
+         "precision": 0.893631910426872,
+         "recall": 0.95775,
+         "f1": 0.9245806685169543,
+         "n": 4000
+        },
+        "Built-up": {
+         "precision": 0.9755335762623634,
+         "recall": 0.937,
+         "f1": 0.9558786023973476,
+         "n": 4000
+        },
+        "Water and wetland": {
+         "precision": 0.9970067348465952,
+         "recall": 0.99925,
+         "f1": 0.9981271070046198,
+         "n": 4000
+        }
+       },
+       "confusion_matrix": [
+        [
+         3665,
+         280,
+         53,
+         1,
+         1
+        ],
+        [
+         2146,
+         1678,
+         159,
+         10,
+         7
+        ],
+        [
+         47,
+         40,
+         3831,
+         82,
+         0
+        ],
+        [
+         0,
+         6,
+         242,
+         3748,
+         4
+        ],
+        [
+         0,
+         0,
+         2,
+         1,
+         3997
+        ]
+       ],
+       "fold_overall_accuracy": [
+        0.8778480082316625,
+        0.887282631468678,
+        0.6673596673596673,
+        0.8591760299625468,
+        0.8688981868898187
+       ]
+      }
+     }
+    },
+    "block_20km": {
+     "fold_distances_m": {
+      "min_train_test_distance": 28.284271247461902,
+      "mean_fold_median_distance": 4562.539937584004
+     },
+     "test_sizes": [
+      8228,
+      3015,
+      3370,
+      2543,
+      2844
+     ],
+     "models": {
+      "random_forest": {
+       "overall_accuracy": 0.8801,
+       "macro_f1": 0.8775982957852232,
+       "per_class": {
+        "Forest": {
+         "precision": 0.7192912602030659,
+         "recall": 0.90325,
+         "f1": 0.8008422919206473,
+         "n": 4000
+        },
+        "Plantation forest": {
+         "precision": 0.8685133239831697,
+         "recall": 0.61925,
+         "f1": 0.7230005837711617,
+         "n": 4000
+        },
+        "Cropland and grassland": {
+         "precision": 0.8898996967576394,
+         "recall": 0.95375,
+         "f1": 0.9207191987450223,
+         "n": 4000
+        },
+        "Built-up": {
+         "precision": 0.963849154746424,
+         "recall": 0.9265,
+         "f1": 0.9448056086679414,
+         "n": 4000
+        },
+        "Water and wetland": {
+         "precision": 0.9994991234660656,
+         "recall": 0.99775,
+         "f1": 0.9986237958213436,
+         "n": 4000
+        }
+       },
+       "confusion_matrix": [
+        [
+         3613,
+         328,
+         58,
+         1,
+         0
+        ],
+        [
+         1369,
+         2477,
+         123,
+         31,
+         0
+        ],
+        [
+         40,
+         39,
+         3815,
+         106,
+         0
+        ],
+        [
+         0,
+         4,
+         288,
+         3706,
+         2
+        ],
+        [
+         1,
+         4,
+         3,
+         1,
+         3991
+        ]
+       ],
+       "fold_overall_accuracy": [
+        0.9445794846864366,
+        0.8660033167495854,
+        0.9195845697329377,
+        0.6598505701926858,
+        0.8586497890295358
+       ]
+      },
+      "gradient_boosting": {
+       "overall_accuracy": 0.88085,
+       "macro_f1": 0.8779174444531526,
+       "per_class": {
+        "Forest": {
+         "precision": 0.718293164757013,
+         "recall": 0.909,
+         "f1": 0.8024718605164423,
+         "n": 4000
+        },
+        "Plantation forest": {
+         "precision": 0.8732950466618808,
+         "recall": 0.60825,
+         "f1": 0.7170645446507515,
+         "n": 4000
+        },
+        "Cropland and grassland": {
+         "precision": 0.8890178778732296,
+         "recall": 0.95725,
+         "f1": 0.9218731190562176,
+         "n": 4000
+        },
+        "Built-up": {
+         "precision": 0.9675408984679305,
+         "recall": 0.9315,
+         "f1": 0.9491784486052732,
+         "n": 4000
+        },
+        "Water and wetland": {
+         "precision": 0.9997496244366549,
+         "recall": 0.99825,
+         "f1": 0.9989992494370779,
+         "n": 4000
+        }
+       },
+       "confusion_matrix": [
+        [
+         3636,
+         306,
+         57,
+         1,
+         0
+        ],
+        [
+         1369,
+         2433,
+         147,
+         50,
+         1
+        ],
+        [
+         57,
+         41,
+         3829,
+         73,
+         0
+        ],
+        [
+         0,
+         6,
+         268,
+         3726,
+         0
+        ],
+        [
+         0,
+         0,
+         6,
+         1,
+         3993
+        ]
+       ],
+       "fold_overall_accuracy": [
+        0.9361934856587263,
+        0.8835820895522388,
+        0.9074183976261128,
+        0.6732206055839559,
+        0.8720112517580872
+       ]
+      }
+     }
+    }
+   }
+  },
+  "final_scheme": {
+   "classes": [
+    "Forest (natural and plantation)",
+    "Cropland and grassland",
+    "Built-up",
+    "Water and wetland"
+   ],
+   "results": {
+    "random": {
+     "fold_distances_m": {
+      "min_train_test_distance": 20.0,
+      "mean_fold_median_distance": 72.11102550927978
+     },
+     "test_sizes": [
+      4000,
+      4000,
+      4000,
+      4000,
+      4000
+     ],
+     "models": {
+      "random_forest": {
+       "overall_accuracy": 0.9778,
+       "macro_f1": 0.9755469189380316,
+       "per_class": {
+        "Forest (natural and plantation)": {
+         "precision": 0.9882249780784166,
+         "recall": 0.986125,
+         "f1": 0.9871738722392542,
+         "n": 8000
+        },
+        "Cropland and grassland": {
+         "precision": 0.9332683877252801,
+         "recall": 0.958,
+         "f1": 0.9454724895139403,
+         "n": 4000
+        },
+        "Built-up": {
+         "precision": 0.9805725971370143,
+         "recall": 0.959,
+         "f1": 0.9696663296258847,
+         "n": 4000
+        },
+        "Water and wetland": {
+         "precision": 1.0,
+         "recall": 0.99975,
+         "f1": 0.9998749843730467,
+         "n": 4000
+        }
+       },
+       "confusion_matrix": [
+        [
+         7889,
+         111,
+         0,
+         0
+        ],
+        [
+         92,
+         3832,
+         76,
+         0
+        ],
+        [
+         2,
+         162,
+         3836,
+         0
+        ],
+        [
+         0,
+         1,
+         0,
+         3999
+        ]
+       ],
+       "fold_overall_accuracy": [
+        0.98275,
+        0.9765,
+        0.977,
+        0.97525,
+        0.9775
+       ]
+      },
+      "gradient_boosting": {
+       "overall_accuracy": 0.9846,
+       "macro_f1": 0.9834319969181629,
+       "per_class": {
+        "Forest (natural and plantation)": {
+         "precision": 0.9897423067300475,
+         "recall": 0.989,
+         "f1": 0.9893710141302988,
+         "n": 8000
+        },
+        "Cropland and grassland": {
+         "precision": 0.9578790882061446,
+         "recall": 0.9665,
+         "f1": 0.9621702339472374,
+         "n": 4000
+        },
+        "Built-up": {
+         "precision": 0.9861495844875346,
+         "recall": 0.979,
+         "f1": 0.9825617864759754,
+         "n": 4000
+        },
+        "Water and wetland": {
+         "precision": 0.9997499374843711,
+         "recall": 0.9995,
+         "f1": 0.9996249531191399,
+         "n": 4000
+        }
+       },
+       "confusion_matrix": [
+        [
+         7912,
+         87,
+         0,
+         1
+        ],
+        [
+         80,
+         3866,
+         54,
+         0
+        ],
+        [
+         2,
+         82,
+         3916,
+         0
+        ],
+        [
+         0,
+         1,
+         1,
+         3998
+        ]
+       ],
+       "fold_overall_accuracy": [
+        0.986,
+        0.9825,
+        0.9835,
+        0.98525,
+        0.98575
+       ]
+      }
+     }
+    },
+    "block_5km": {
+     "fold_distances_m": {
+      "min_train_test_distance": 20.0,
+      "mean_fold_median_distance": 1305.6643015898098
+     },
+     "test_sizes": [
+      4861,
+      4716,
+      3576,
+      3601,
+      3246
+     ],
+     "models": {
+      "random_forest": {
+       "overall_accuracy": 0.9731,
+       "macro_f1": 0.9703381130243891,
+       "per_class": {
+        "Forest (natural and plantation)": {
+         "precision": 0.9869428750784683,
+         "recall": 0.982625,
+         "f1": 0.9847792045098653,
+         "n": 8000
+        },
+        "Cropland and grassland": {
+         "precision": 0.9176895306859206,
+         "recall": 0.95325,
+         "f1": 0.9351318209687308,
+         "n": 4000
+        },
+        "Built-up": {
+         "precision": 0.9763069791398403,
+         "recall": 0.94775,
+         "f1": 0.9618165672967145,
+         "n": 4000
+        },
+        "Water and wetland": {
+         "precision": 1.0,
+         "recall": 0.99925,
+         "f1": 0.9996248593222459,
+         "n": 4000
+        }
+       },
+       "confusion_matrix": [
+        [
+         7861,
+         134,
+         5,
+         0
+        ],
+        [
+         100,
+         3813,
+         87,
+         0
+        ],
+        [
+         2,
+         207,
+         3791,
+         0
+        ],
+        [
+         2,
+         1,
+         0,
+         3997
+        ]
+       ],
+       "fold_overall_accuracy": [
+        0.973050812590002,
+        0.9773112807463953,
+        0.9804250559284117,
+        0.9641766176062205,
+        0.9688847812692545
+       ]
+      },
+      "gradient_boosting": {
+       "overall_accuracy": 0.97605,
+       "macro_f1": 0.9741162631628671,
+       "per_class": {
+        "Forest (natural and plantation)": {
+         "precision": 0.9879138864408914,
+         "recall": 0.980875,
+         "f1": 0.9843818603775952,
+         "n": 8000
+        },
+        "Cropland and grassland": {
+         "precision": 0.9264351181862036,
+         "recall": 0.96025,
+         "f1": 0.9430395286029953,
+         "n": 4000
+        },
+        "Built-up": {
+         "precision": 0.9803220035778175,
+         "recall": 0.959,
+         "f1": 0.9695437887021358,
+         "n": 4000
+        },
+        "Water and wetland": {
+         "precision": 0.9997498749374687,
+         "recall": 0.99925,
+         "f1": 0.9994998749687422,
+         "n": 4000
+        }
+       },
+       "confusion_matrix": [
+        [
+         7847,
+         144,
+         8,
+         1
+        ],
+        [
+         91,
+         3841,
+         68,
+         0
+        ],
+        [
+         4,
+         160,
+         3836,
+         0
+        ],
+        [
+         1,
+         1,
+         1,
+         3997
+        ]
+       ],
+       "fold_overall_accuracy": [
+        0.9775766303229788,
+        0.9807039864291772,
+        0.9821029082774049,
+        0.9683421271868925,
+        0.9688847812692545
+       ]
+      }
+     }
+    },
+    "block_10km": {
+     "fold_distances_m": {
+      "min_train_test_distance": 28.284271247461902,
+      "mean_fold_median_distance": 2786.764032629022
+     },
+     "test_sizes": [
+      6698,
+      4690,
+      2744,
+      2970,
+      2898
+     ],
+     "models": {
+      "random_forest": {
+       "overall_accuracy": 0.96905,
+       "macro_f1": 0.9657187719699747,
+       "per_class": {
+        "Forest (natural and plantation)": {
+         "precision": 0.9871487967746,
+         "recall": 0.979375,
+         "f1": 0.9832465332245718,
+         "n": 8000
+        },
+        "Cropland and grassland": {
+         "precision": 0.9045249940772329,
+         "recall": 0.9545,
+         "f1": 0.9288407736285124,
+         "n": 4000
+        },
+        "Built-up": {
+         "precision": 0.9721281583745767,
+         "recall": 0.933,
+         "f1": 0.9521622655951014,
+         "n": 4000
+        },
+        "Water and wetland": {
+         "precision": 0.9982513115163627,
+         "recall": 0.999,
+         "f1": 0.9986255154317131,
+         "n": 4000
+        }
+       },
+       "confusion_matrix": [
+        [
+         7835,
+         147,
+         17,
+         1
+        ],
+        [
+         93,
+         3818,
+         89,
+         0
+        ],
+        [
+         8,
+         254,
+         3732,
+         6
+        ],
+        [
+         1,
+         2,
+         1,
+         3996
+        ]
+       ],
+       "fold_overall_accuracy": [
+        0.9782024484920872,
+        0.9671641791044776,
+        0.9602769679300291,
+        0.9616161616161616,
+        0.9668737060041408
+       ]
+      },
+      "gradient_boosting": {
+       "overall_accuracy": 0.9723,
+       "macro_f1": 0.9697262669843859,
+       "per_class": {
+        "Forest (natural and plantation)": {
+         "precision": 0.9873976055450535,
+         "recall": 0.979375,
+         "f1": 0.9833699403828051,
+         "n": 8000
+        },
+        "Cropland and grassland": {
+         "precision": 0.9144563918757467,
+         "recall": 0.95675,
+         "f1": 0.9351252290775809,
+         "n": 4000
+        },
+        "Built-up": {
+         "precision": 0.9755154639175257,
+         "recall": 0.94625,
+         "f1": 0.9606598984771574,
+         "n": 4000
+        },
+        "Water and wetland": {
+         "precision": 0.99975,
+         "recall": 0.99975,
+         "f1": 0.99975,
+         "n": 4000
+        }
+       },
+       "confusion_matrix": [
+        [
+         7835,
+         148,
+         16,
+         1
+        ],
+        [
+         94,
+         3827,
+         79,
+         0
+        ],
+        [
+         6,
+         209,
+         3785,
+         0
+        ],
+        [
+         0,
+         1,
+         0,
+         3999
+        ]
+       ],
+       "fold_overall_accuracy": [
+        0.9829799940280681,
+        0.9671641791044776,
+        0.9646501457725948,
+        0.9649831649831649,
+        0.9706694271911663
+       ]
+      }
+     }
+    },
+    "block_20km": {
+     "fold_distances_m": {
+      "min_train_test_distance": 28.284271247461902,
+      "mean_fold_median_distance": 4914.060882883275
+     },
+     "test_sizes": [
+      8726,
+      2728,
+      2871,
+      2743,
+      2932
+     ],
+     "models": {
+      "random_forest": {
+       "overall_accuracy": 0.964,
+       "macro_f1": 0.9597208043253509,
+       "per_class": {
+        "Forest (natural and plantation)": {
+         "precision": 0.98638769851273,
+         "recall": 0.97825,
+         "f1": 0.9823019957323962,
+         "n": 8000
+        },
+        "Cropland and grassland": {
+         "precision": 0.8898305084745762,
+         "recall": 0.945,
+         "f1": 0.9165858389912707,
+         "n": 4000
+        },
+        "Built-up": {
+         "precision": 0.9629049111807733,
+         "recall": 0.9215,
+         "f1": 0.941747572815534,
+         "n": 4000
+        },
+        "Water and wetland": {
+         "precision": 0.9994987468671679,
+         "recall": 0.997,
+         "f1": 0.9982478097622027,
+         "n": 4000
+        }
+       },
+       "confusion_matrix": [
+        [
+         7826,
+         153,
+         21,
+         0
+        ],
+        [
+         100,
+         3780,
+         120,
+         0
+        ],
+        [
+         6,
+         306,
+         3686,
+         2
+        ],
+        [
+         2,
+         9,
+         1,
+         3988
+        ]
+       ],
+       "fold_overall_accuracy": [
+        0.9759339903735962,
+        0.966275659824047,
+        0.9446185997910136,
+        0.942398833394094,
+        0.9655525238744884
+       ]
+      },
+      "gradient_boosting": {
+       "overall_accuracy": 0.9692,
+       "macro_f1": 0.9663183984521917,
+       "per_class": {
+        "Forest (natural and plantation)": {
+         "precision": 0.9848961611076148,
+         "recall": 0.978125,
+         "f1": 0.9814989024772656,
+         "n": 8000
+        },
+        "Cropland and grassland": {
+         "precision": 0.9105086372360844,
+         "recall": 0.94875,
+         "f1": 0.9292360430950048,
+         "n": 4000
+        },
+        "Built-up": {
+         "precision": 0.9699383350462487,
+         "recall": 0.94375,
+         "f1": 0.9566649771920933,
+         "n": 4000
+        },
+        "Water and wetland": {
+         "precision": 0.9984981226533166,
+         "recall": 0.99725,
+         "f1": 0.9978736710444027,
+         "n": 4000
+        }
+       },
+       "confusion_matrix": [
+        [
+         7825,
+         155,
+         19,
+         1
+        ],
+        [
+         107,
+         3795,
+         98,
+         0
+        ],
+        [
+         12,
+         208,
+         3775,
+         5
+        ],
+        [
+         1,
+         10,
+         0,
+         3989
+        ]
+       ],
+       "fold_overall_accuracy": [
+        0.9776529910611964,
+        0.966642228739003,
+        0.9606408916753745,
+        0.9471381698869851,
+        0.975443383356071
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "hansen_loss_by_year": {
+  "source": "Hansen et al. (2013) Global Forest Change 2000-2024 v1.12, tile 00N_030E",
+  "box_land_km2": 7891.629107043504,
+  "treecover2000_ge30_km2": 3588.397235168404,
+  "loss_km2_by_year": {
+   "2001": 44.160873850119515,
+   "2002": 83.06554246782557,
+   "2003": 16.93124003189162,
+   "2004": 55.1061116719723,
+   "2005": 31.719285240741264,
+   "2006": 68.55537941059924,
+   "2007": 36.68048978896281,
+   "2008": 33.64653108457952,
+   "2009": 22.64060881376659,
+   "2010": 78.56931673106487,
+   "2011": 36.321293148817425,
+   "2012": 32.866572586942915,
+   "2013": 27.515352362144952,
+   "2014": 19.526386721939687,
+   "2015": 26.515665936100213,
+   "2016": 31.218532316536518,
+   "2017": 45.989247878783004,
+   "2018": 41.032566451855985,
+   "2019": 35.486114001705715,
+   "2020": 35.40091741130294,
+   "2021": 7.961573020397015,
+   "2022": 12.024596784089237,
+   "2023": 24.956765732223325,
+   "2024": 28.42711900034169
+  },
+  "loss_total_km2": 876.3180824447039,
+  "note": "Loss is stand-replacement disturbance of tree cover (vegetation taller than 5 m), not deforestation alone; plantation harvest counts as loss. The product's processing changed over the record, so year-to-year comparisons need care."
+ },
+ "map_areas": {
+  "model": "random forest, 300 trees, min_samples_leaf 2, trained on all training samples",
+  "cell_km2": 0.0004,
+  "classified_cells": 19721458,
+  "box_cells": 19721764,
+  "unclassified_cells_in_box": 306,
+  "mapped": {
+   "Forest (natural and plantation)": {
+    "code": 1,
+    "cells": 7191746,
+    "area_km2": 2876.6984,
+    "share": 0.3646660404114138,
+    "mean_top_probability": 0.9388956812434699
+   },
+   "Cropland and grassland": {
+    "code": 3,
+    "cells": 11922896,
+    "area_km2": 4769.1584,
+    "share": 0.6045646320875465,
+    "mean_top_probability": 0.8906826000998416
+   },
+   "Built-up": {
+    "code": 4,
+    "cells": 477828,
+    "area_km2": 191.1312,
+    "share": 0.024228837441937608,
+    "mean_top_probability": 0.7636870589417113
+   },
+   "Water and wetland": {
+    "code": 5,
+    "cells": 128988,
+    "area_km2": 51.595200000000006,
+    "share": 0.006540490059102121,
+    "mean_top_probability": 0.9598205259403976
+   }
+  },
+  "feature_importance": {
+   "B02": 0.0475,
+   "B03": 0.0322,
+   "B04": 0.0519,
+   "B05": 0.1,
+   "B06": 0.0312,
+   "B07": 0.0479,
+   "B08": 0.0525,
+   "B8A": 0.0848,
+   "B11": 0.1154,
+   "B12": 0.1418,
+   "NDVI": 0.1079,
+   "NDWI": 0.1112,
+   "NDMI": 0.0112,
+   "NBR": 0.0304,
+   "elevation": 0.0253,
+   "slope": 0.0086
+  }
+ },
+ "reference_search": {
+  "fritz2017": {
+   "dataset": "Fritz et al. (2017) Geo-Wiki crowdsourced reference data, 2011-2012",
+   "doi": "10.1594/PANGAEA.869682",
+   "records_global": 151942,
+   "records_in_box": 11,
+   "locations_in_box": 6
+  },
+  "lesiv2025": {
+   "dataset": "Lesiv et al. (2025) global reference data set for land cover at 10 m, reference year 2015",
+   "doi": "10.5281/zenodo.14871660",
+   "records_global": 16569600,
+   "records_in_box": 2100,
+   "sites_in_box": 21,
+   "classes_in_box": {
+    "crops": 1010,
+    "tree": 400,
+    "grassland": 236,
+    "shrub": 231,
+    "urban/built-up": 139,
+    "fallow/shifting cultivation": 54,
+    "bare": 30
+   }
+  },
+  "target_points": 100,
+  "enough_for_accuracy": false,
+  "reason": "Too few sites inside the box, collected for other years (2011-2012 and 2015) and not drawn from the strata of this map, so they cannot give unbiased accuracy or area estimates for 2025."
+ },
+ "sample_design": {
+  "target_overall_se": 0.015,
+  "min_per_class": 75,
+  "expected_users_accuracy": {
+   "Forest (natural and plantation)": 0.9,
+   "Cropland and grassland": 0.85,
+   "Built-up": 0.7,
+   "Water and wetland": 0.9
+  },
+  "mapped_share": {
+   "Forest (natural and plantation)": 0.3646660404114138,
+   "Cropland and grassland": 0.6045646320875465,
+   "Built-up": 0.024228837441937608,
+   "Water and wetland": 0.006540490059102121
+  },
+  "formula_sample_size": 509,
+  "total_sample_size": 644,
+  "allocation": {
+   "Forest (natural and plantation)": 186,
+   "Cropland and grassland": 308,
+   "Built-up": 75,
+   "Water and wetland": 75
+  },
+  "proportional_allocation": {
+   "Forest (natural and plantation)": 186,
+   "Cropland and grassland": 308,
+   "Built-up": 12,
+   "Water and wetland": 3
+  },
+  "formula_sample_size_at_se_0_01": 1145,
+  "label_classes": [
+   "Forest (natural and plantation)",
+   "Cropland and grassland",
+   "Built-up",
+   "Water and wetland",
+   "Bare or other",
+   "Unclear"
+  ]
+ },
+ "training": {
+  "rule": "WorldCover 2021 and Esri 2023 agree, 3 x 3 neighbourhood homogeneous, at least 3 clear observations; tree cover split by the 2015 forest management map; tree cells with Hansen loss 2021-2024 dropped",
+  "n_per_class_max": 4000,
+  "eligible_cells": {
+   "Forest": 4212672,
+   "Plantation forest": 4927,
+   "Cropland and grassland": 6563573,
+   "Built-up": 54236,
+   "Water and wetland": 108664,
+   "Bare": 0
+  },
+  "agreeing_cells_before_filters": {
+   "Forest": 4739422,
+   "Plantation forest": 10291,
+   "Cropland and grassland": 9440129,
+   "Built-up": 161914,
+   "Water and wetland": 112284,
+   "Bare": 42
+  },
+  "sampled": {
+   "Forest": 4000,
+   "Plantation forest": 4000,
+   "Cropland and grassland": 4000,
+   "Built-up": 4000,
+   "Water and wetland": 4000,
+   "Bare": 0
+  },
+  "box_cells": 19721764,
+  "share_of_box_with_agreement": 0.7334071130756863,
+  "fml_share_of_box": {
+   "0": 0.14839732389049987,
+   "11": 0.10661216714691445,
+   "20": 0.35130468045353347,
+   "31": 0.0,
+   "32": 0.0011862529132789543,
+   "40": 0.0,
+   "53": 0.39249957559577325
+  },
+  "tree_agreement_by_fml": {
+   "0": 144061,
+   "11": 2061848,
+   "20": 2741195,
+   "31": 0,
+   "32": 10470,
+   "40": 0,
+   "53": 491192
+  }
+ }
+}

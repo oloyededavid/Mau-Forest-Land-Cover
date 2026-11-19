@@ -1,0 +1,55 @@
+<!-- page-end:start -->
+<section id="key-terms" aria-labelledby="h-terms">
+    <h2 id="h-terms">Key terms</h2>
+    <dl class="glossary">
+        <dt>Land cover</dt><dd>What covers the ground: trees, crops, grass, buildings, water. It is not land use, so a tea estate and a natural forest can look alike.</dd>
+        <dt>Sentinel-2 composite</dt><dd>One image built from many satellite passes. For each 20 m cell, the middle value of the cloud-free passes from January to March 2025 is kept.</dd>
+        <dt>Map-agreement training</dt><dd>Taking training labels from cells where two existing maps, here ESA WorldCover and the Esri land cover map, give the same class. It is quick, but it carries those maps' errors and definitions into the new map.</dd>
+        <dt>Random forest</dt><dd>A classifier that combines many decision trees, each grown on a random part of the training data, and lets them vote on each cell's class.</dd>
+        <dt>Cross-validation</dt><dd>Training on part of the labelled cells and testing on the rest, five times over, so every cell is tested once.</dd>
+        <dt>Spatially blocked cross-validation</dt><dd>Cross-validation in which the test cells are whole squares of land (5, 10 or 20 km) that the model did not train on, so neighbouring look-alike cells cannot sit on both sides.</dd>
+        <dt>Precision and recall</dt><dd>Precision: of the cells the model called forest, the share that the labels also call forest. Recall: of the cells the labels call forest, the share the model found.</dd>
+        <dt>Stratified random sample</dt><dd>Random points drawn separately within each mapped class, with more points than its area alone would give to small classes such as built-up land and water.</dd>
+        <dt>Stratified area estimate</dt><dd>An estimate of each class's true area, with a confidence interval, that corrects the mapped area using the errors found at the sample points (Olofsson et al., 2014).</dd>
+        <dt>Hansen forest loss</dt><dd>A global map of the year in which tree cover taller than 5 m was removed, from Landsat. It counts plantation harvest as loss.</dd>
+        <dt>Study box</dt><dd>The rectangle from {{bbox_text}} used here. It is not the legal boundary of the forest reserves.</dd>
+    </dl>
+</section>
+
+<section id="data-code" aria-labelledby="h-dc">
+    <h2 id="h-dc">Data, code and citation</h2>
+    <ul class="downloads">
+        <li><a href="data/results.json" download>results.json</a><span>Every result file from outputs/ in one file</span></li>
+        <li><a href="data/reference_sample.csv" download>reference_sample.csv</a><span>The stratified reference points, with their map class</span></li>
+        <li><a href="label.html">Labelling tool</a><span>Label the reference points on high-resolution imagery</span></li>
+        <li><a href="https://github.com/oloyededavid/Mau-Forest-Land-Cover/raw/main/paper/paper.docx">Paper (Word)</a><span>Same text, for printing or comment</span></li>
+        <li><a href="https://github.com/oloyededavid/Mau-Forest-Land-Cover">Repository</a><span>Scripts, tests and outputs</span></li>
+    </ul>
+    <h3 id="cite">How to cite</h3>
+    <div class="citation">
+        <p id="cite-text">Oloyede, D. (2026). <i>Mapping land cover in the Mau Forest Complex, Kenya, with Sentinel-2: a classifier tested by spatially blocked cross-validation, with stratified area estimates for 2025</i>. https://github.com/oloyededavid/Mau-Forest-Land-Cover</p>
+        <button type="button" class="button" id="copy-cite">Copy citation</button>
+    </div>
+</section>
+
+<!-- PLACEHOLDER: David to rewrite "A note from me" in his own words before publishing. -->
+<section class="note" aria-labelledby="h-note">
+    <h2 id="h-note">A note from me</h2>
+    <p>Thank you for reading. This study maps land cover around the Mau Forest Complex in 2025 and tests how far the classifier can be trusted in places it was not trained on. The accuracy and area estimates are still waiting for the reference points to be labelled.</p>
+    <p>If you know the Mau and something on the map does not match what you see on the ground, please <a href="https://github.com/oloyededavid/Mau-Forest-Land-Cover/issues">open an issue on the repository</a>.</p>
+    <p class="sign">David</p>
+</section>
+
+<section id="feedback" class="feedback" aria-labelledby="h-fb">
+    <h2 id="h-fb">Was this research useful?</h2>
+    <div class="react-row">
+        <div class="reactions" role="group" aria-labelledby="h-fb">
+            <button type="button" class="button react" data-react="Useful" aria-pressed="false">Useful <span class="rc"></span></button>
+            <button type="button" class="button react" data-react="Interesting" aria-pressed="false">Interesting <span class="rc"></span></button>
+            <button type="button" class="button react" data-react="Needs clarity" aria-pressed="false">Needs clarity <span class="rc"></span></button>
+        </div>
+        <span class="react-status" id="react-status" role="status"></span>
+    </div>
+    <p class="react-note">One reaction per browser. Counts are anonymous and kept by a public counter.</p>
+</section>
+<!-- page-end:end -->
