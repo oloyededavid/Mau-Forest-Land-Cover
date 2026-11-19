@@ -312,7 +312,8 @@ def figures():
     fig = ROOT / "paper" / "figures"
     fig.mkdir(parents=True, exist_ok=True)
     for src, dst in (("m01_composite", "fig1_composite"), ("m02_landcover", "fig2_landcover"),
-                     ("m03_agreement", "fig3_agreement"), ("m04_hansen_loss_years", "fig4_hansen")):
+                     ("m03_agreement", "fig3_agreement"), ("m04_hansen_loss_years", "fig4_hansen"),
+                     ("m05_samples", "fig_samples"), ("m06_cv", "fig_cv"), ("m07_areas", "fig_areas")):
         im = Image.open(study.DOCS / "assets" / "maps" / f"{src}.webp").convert("RGB")
         if im.width > 1600:
             im = im.resize((1600, round(im.height * 1600 / im.width)), Image.LANCZOS)

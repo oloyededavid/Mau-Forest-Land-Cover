@@ -19,6 +19,9 @@ MAPS = {  # paper figure image -> (desktop webp, phone webp or None)
     "paper/figures/fig2_landcover.jpg": ("assets/maps/m02_landcover.webp", "assets/maps/m02_landcover_phone.webp"),
     "paper/figures/fig3_agreement.jpg": ("assets/maps/m03_agreement.webp", "assets/maps/m03_agreement_phone.webp"),
     "paper/figures/fig4_hansen.jpg": ("assets/maps/m04_hansen_loss_years.webp", "assets/maps/m04_hansen_loss_years_phone.webp"),
+    "paper/figures/fig_samples.jpg": ("assets/maps/m05_samples.webp", "assets/maps/m05_samples_phone.webp"),
+    "paper/figures/fig_cv.jpg": ("assets/maps/m06_cv.webp", "assets/maps/m06_cv_phone.webp"),
+    "paper/figures/fig_areas.jpg": ("assets/maps/m07_areas.webp", "assets/maps/m07_areas_phone.webp"),
 }
 FIG = re.compile(r"!\[(\*\*Figure (\d+)\.\*\* )?(.*?)\]\((paper/figures/[^)]+)\)")
 DESCRIPTION = ("Land cover in 2025 around the Mau Forest Complex, Kenya, from Sentinel-2: a random forest trained on "

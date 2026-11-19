@@ -9,7 +9,8 @@ Python scripts that produce every number and map on it.
   `scripts/` writes. Never type a result into the template, HTML or JavaScript. `scripts/build_paper.py` fills
   `paper/template.md` and stops if a statement in it no longer matches the outputs (`need(...)` checks);
   `scripts/build_page.py` builds the page from the paper.
-- Map images in `docs/assets/maps/` and overlays in `docs/data/overlays/` are written by `scripts/s10_figures.py`.
+- Map images in `docs/assets/maps/` and overlays in `docs/data/overlays/` are written by `scripts/s10_figures.py`
+  and `scripts/s11_charts.py`.
   Do not edit them by hand.
 - Training labels come from existing maps; cross-validated accuracy is agreement with those labels, not map
   accuracy. Say so wherever it is reported.
@@ -32,6 +33,7 @@ Python scripts that produce every number and map on it.
 | Sample design | `python scripts/s08_sample_design.py` | `outputs/reference_sample.csv`, `outputs/sample_design.json`, `docs/data/label_points.json` |
 | Accuracy | `python scripts/s09_accuracy.py` | `outputs/accuracy.json` |
 | Figures | `python scripts/s10_figures.py` | `docs/assets/maps/*.webp`, `docs/data/overlays*` |
+| Charts from committed outputs (no rasters needed) | `python scripts/s11_charts.py` | `docs/assets/maps/m05_samples*`, `m06_cv*`, `m07_areas*` |
 | Paper and page | `python scripts/build_paper.py && pandoc paper/paper.md -o paper/paper.docx --resource-path=. && python scripts/build_page.py` | `paper/paper.md`, `paper/paper.docx`, `docs/index.html`, `docs/data/results.json` |
 | Tests | `pytest` | |
 

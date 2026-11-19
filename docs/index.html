@@ -98,20 +98,20 @@ cells where ESA WorldCover 2021 and the Esri land cover map for 2023
 agree on a class. A random forest separates forest, cropland and
 grassland, built-up land, and water and wetland. A separate plantation
 forest class, labelled from a 2015 forest management map, did not pass a
-rule written into the code before cross-validation was run, not
-pre-registered (recall 0.61 under 10 km blocked cross-validation,
-against a required 0.70), so plantations are mapped with forest, and no
-bare-ground class could be trained. Overall agreement with the
-map-agreement labels is 0.98 with random cross-validation and 0.97 with
-10 km spatial blocks; with the plantation class kept, it falls from 0.95
-to 0.88. These figures measure agreement with labels from existing maps
-on uniform cells, not map accuracy. The map shows 2,877 km² of forest
-(36% of the box), against 3,594 km² in WorldCover and 2,376 km² in the
-Esri map; it agrees with WorldCover on 83% of the box and with the Esri
-map on 84%. Because the training labels are the cells where these two
-maps agree, this agreement is partly built in and is not evidence of
-accuracy. Accuracy and stratified area estimates are pending the
-labelling of a 644-point stratified reference sample, for which the
+rule written into the code before cross-validation was run (the rule was
+not pre-registered): its recall under 10 km blocked cross-validation was
+0.61, against a required 0.70. Plantations are therefore mapped with
+forest, and no bare-ground class could be trained. Overall agreement
+with the map-agreement labels is 0.98 with random cross-validation and
+0.97 with 10 km spatial blocks; with the plantation class kept, it falls
+from 0.95 to 0.88. These figures measure agreement with labels from
+existing maps on uniform cells, not map accuracy. The map shows 2,877
+km² of forest (36% of the box), against 3,594 km² in WorldCover and
+2,376 km² in the Esri map; it agrees with WorldCover on 83% of the box
+and with the Esri map on 84%. Because the training labels are the cells
+where these two maps agree, this agreement is partly built in and is not
+evidence of accuracy. Accuracy and stratified area estimates are pending
+the labelling of a 644-point stratified reference sample, for which the
 study provides the sample and a labelling tool; no open reference data
 set had enough points inside the box.</p>
 <p><strong>Keywords:</strong> land cover; Sentinel-2; random forest;
@@ -172,7 +172,7 @@ indices were added: NDVI, NDWI (green and near infrared), NDMI (near
 infrared and shortwave infrared 1) and an NBR-type index (near infrared
 and shortwave infrared 2). Elevation from the Copernicus DEM GLO-30
 (ESA, 2022), resampled bilinearly to 20 m, and slope computed from it
-complete 16 features per cell.</p>
+bring the total to 16 features per cell.</p>
 <h3 id="classes-and-training-labels">2.3 Classes and training
 labels</h3>
 <p>The candidate classes were forest, plantation forest, cropland and
@@ -274,7 +274,18 @@ have no clear observation. Eligible training cells were plentiful for
 forest (4,212,672), cropland and grassland (6,563,573), built-up land
 (54,236) and water and wetland (108,664), but plantation forest had only
 4,927 cells and bare ground had none after the neighbourhood rule (42
-agreeing cells before it), so no bare class was trained.</p>
+agreeing cells before it), so no bare class was trained. Figure 2 shows
+where the training cells and the reference points lie.</p>
+<figure class="wide reveal mapimg" id="fig-2">
+<picture><source media="(max-width: 760px)" srcset="assets/maps/m05_samples_phone.webp"><img src="assets/maps/m05_samples.webp" width="2200" height="1280" loading="lazy" alt="Where the training cells (left) and the reference sample (right) lie. Training cells are where ESA WorldCover 2021 and Esri 2023 agree in a uniform neighbourhood, before plantation was merged into forest; reference points are shown without their map class, so labelling stays blind."></picture>
+<figcaption>
+<b>Figure 2.</b> Where the training cells (left) and the reference
+sample (right) lie. Training cells are where ESA WorldCover 2021 and
+Esri 2023 agree in a uniform neighbourhood, before plantation was merged
+into forest; reference points are shown without their map class, so
+labelling stays blind.
+</figcaption>
+</figure>
 <h3 id="class-scheme-and-cross-validation">3.2 Class scheme and
 cross-validation</h3>
 <p>With the plantation class kept, both classifiers agree well with the
@@ -403,11 +414,21 @@ shares, built-up precision under 10 km blocks would be 0.61 instead of
 already agree, in uniform neighbourhoods, so they are easier than the
 average cell and these values should be read as an upper bound on how
 well the map matches its own label source.</p>
+<figure class="wide reveal mapimg" id="fig-3">
+<picture><source media="(max-width: 760px)" srcset="assets/maps/m06_cv_phone.webp"><img src="assets/maps/m06_cv.webp" width="2000" height="960" loading="lazy" alt="Overall agreement with the map-agreement labels under random folds and 5, 10 and 20 km spatial blocks. Keeping the plantation class makes agreement fall once whole areas are held out; in the final scheme it barely changes. This is agreement with labels from existing maps, not map accuracy."></picture>
+<figcaption>
+<b>Figure 3.</b> Overall agreement with the map-agreement labels under
+random folds and 5, 10 and 20 km spatial blocks. Keeping the plantation
+class makes agreement fall once whole areas are held out; in the final
+scheme it barely changes. This is agreement with labels from existing
+maps, not map accuracy.
+</figcaption>
+</figure>
 <h3 id="the-2025-map">3.3 The 2025 map</h3>
-<figure class="wide reveal mapimg" id="fig-2">
+<figure class="wide reveal mapimg" id="fig-4">
 <picture><source media="(max-width: 760px)" srcset="assets/maps/m02_landcover_phone.webp"><img src="assets/maps/m02_landcover.webp" width="2200" height="1640" loading="lazy" alt="Land cover in 2025 from the random forest. Forest includes tree plantations and may include some tea."></picture>
 <figcaption>
-<b>Figure 2.</b> Land cover in 2025 from the random forest. Forest
+<b>Figure 4.</b> Land cover in 2025 from the random forest. Forest
 includes tree plantations and may include some tea.
 </figcaption>
 </figure>
@@ -474,39 +495,48 @@ forest and 0.76 for built-up cells. Built-up land is the least certain
 class and the one where the maps differ most.</p>
 <h3 id="comparison-with-worldcover-esri-and-hansen">3.4 Comparison with
 WorldCover, Esri and Hansen</h3>
-<figure class="wide reveal mapimg" id="fig-3">
+<figure class="wide reveal mapimg" id="fig-5">
 <picture><source media="(max-width: 760px)" srcset="assets/maps/m03_agreement_phone.webp"><img src="assets/maps/m03_agreement.webp" width="2200" height="1640" loading="lazy" alt="Agreement of the 2025 map with WorldCover 2021 and Esri 2023 after translation into the same classes."></picture>
 <figcaption>
-<b>Figure 3.</b> Agreement of the 2025 map with WorldCover 2021 and Esri
+<b>Figure 5.</b> Agreement of the 2025 map with WorldCover 2021 and Esri
 2023 after translation into the same classes.
 </figcaption>
 </figure>
 <p>WorldCover and the Esri map disagree on 1,823 km² of the box. On
 these cells, which the training sample left out, the 2025 map sides with
-the Esri map in 50% of cells and with WorldCover in 43%, and with
-neither in 7%. Over the whole box, the 2025 map agrees with WorldCover
-on 83%, with the Esri map on 84%, with both on 73% and with neither on
-6%; the two existing maps agree with each other on 77%. Because the
-training labels are the cells where these two maps agree, this agreement
-is partly built in and is not evidence of accuracy. The largest single
-disagreement is 747 km² that WorldCover calls tree cover and both the
-Esri map and this map call cropland and grassland; next is 476 km² that
-this map and WorldCover call forest and the Esri map calls crops or
-rangeland. In Figure 3 the disagreements lie mainly in the farmed areas
-around the forest blocks, where small fields, hedgerows, woodlots and
-tea mix within a few cells. Forest area is 3,594 km² in WorldCover,
-2,877 km² here and 2,376 km² in the Esri map; built-up land is 74, 191
-and 446 km².</p>
-<figure class="wide reveal mapimg" id="fig-4">
+the Esri map in 50% of cells, with WorldCover in 43% and with neither in
+7%. Over the whole box, the 2025 map agrees with WorldCover on 83%, with
+the Esri map on 84%, with both on 73% and with neither on 6%; the two
+existing maps agree with each other on 77%. Because the training labels
+are the cells where these two maps agree, this agreement is partly built
+in and is not evidence of accuracy. The largest single disagreement is
+747 km² that WorldCover calls tree cover and both the Esri map and this
+map call cropland and grassland; next is 476 km² that this map and
+WorldCover call forest and the Esri map calls crops or rangeland. In
+Figure 5 the disagreements lie mainly in the farmed areas around the
+forest blocks, where small fields, hedgerows, woodlots and tea mix
+within a few cells. Forest area is 3,594 km² in WorldCover, 2,877 km²
+here and 2,376 km² in the Esri map; built-up land is 74, 191 and 446 km²
+(Figure 6).</p>
+<figure class="wide reveal mapimg" id="fig-6">
+<picture><source media="(max-width: 760px)" srcset="assets/maps/m07_areas_phone.webp"><img src="assets/maps/m07_areas.webp" width="2000" height="960" loading="lazy" alt="Mapped area by class in ESA WorldCover 2021, this map and Esri 2023, from pixel counts after translation into the same classes. These are mapped areas, not estimates with confidence intervals."></picture>
+<figcaption>
+<b>Figure 6.</b> Mapped area by class in ESA WorldCover 2021, this map
+and Esri 2023, from pixel counts after translation into the same
+classes. These are mapped areas, not estimates with confidence
+intervals.
+</figcaption>
+</figure>
+<figure class="wide reveal mapimg" id="fig-7">
 <picture><source media="(max-width: 760px)" srcset="assets/maps/m04_hansen_loss_years_phone.webp"><img src="assets/maps/m04_hansen_loss_years.webp" width="2000" height="880" loading="lazy" alt="Tree cover loss by year inside the study box in Hansen Global Forest Change v1.12. Loss includes plantation harvest and is not deforestation alone."></picture>
 <figcaption>
-<b>Figure 4.</b> Tree cover loss by year inside the study box in Hansen
+<b>Figure 7.</b> Tree cover loss by year inside the study box in Hansen
 Global Forest Change v1.12. Loss includes plantation harvest and is not
 deforestation alone.
 </figcaption>
 </figure>
 <p>Hansen records 876 km² of tree cover loss inside the box from 2001 to
-2024 (Figure 4); for scale, 3,588 km² of the box had at least 30% tree
+2024 (Figure 7); for scale, 3,588 km² of the box had at least 30% tree
 cover in 2000. The largest yearly totals are 83 km² in 2002 and 79 km²
 in 2010; the smallest is 8 km² in 2021. Of the cells with loss at any
 time in 2001–2024, 35% are forest in the 2025 map, which could reflect
@@ -592,8 +622,8 @@ are only a descriptive check. The study area is a rectangle, not the
 legal boundary of the forest reserves, so the areas here are not areas
 of the gazetted forest. The reference sample, once labelled, will rest
 on one interpreter reading high-resolution imagery of uncertain date,
-not on field visits. We did not test other block sizes than 5, 10 and 20
-km, other classifiers, or tune either model.</p>
+not on field visits. We did not test block sizes other than 5, 10 and 20
+km or other classifiers, and did not tune either model.</p>
 <h2 id="conclusion">6. Conclusion</h2>
 <p>A random forest trained on map-agreement labels maps forest, cropland
 and grassland, built-up land and water around the Mau Forest Complex in
