@@ -1,0 +1,25 @@
+/* Labelling tool for the reference sample (docs/label.html). */
+.lb-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 20px; max-width: 1240px; margin: 0 auto; padding: 18px 16px 6px; }
+.lb-head h1 { margin: 0; font-size: 24px; font-weight: 700; }
+.lb-back { font-size: 15px; color: var(--ink-2); min-height: 44px; display: inline-flex; align-items: center; }
+.lb-main { max-width: 1240px; margin: 0 auto; padding: 0 16px 48px; }
+.lb-intro p { max-width: 900px; margin: 6px 0 10px; font-size: 15px; line-height: 1.55; color: var(--ink-2); }
+.lb-grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 20px; margin-top: 12px; }
+@media (max-width: 900px) { .lb-grid { grid-template-columns: minmax(0, 1fr); } }
+.lb-map { height: 70vh; min-height: 360px; border: 1px solid #e4e3de; border-radius: 6px; background: #eceae4; z-index: 0; }
+@media (max-width: 900px) { .lb-map { height: 55vh; } }
+.lb-panel { min-width: 0; }
+.lb-point { margin: 0 0 6px; font-size: 20px; font-weight: 700; }
+.lb-muted { color: var(--ink-3); font-size: 14px; font-weight: 400; }
+.lb-progress { height: 6px; background: #ecebe6; border-radius: 3px; overflow: hidden; }
+.lb-progress span { display: block; height: 100%; width: 0; background: #1f6b35; }
+.lb-classes { display: grid; grid-template-columns: 1fr; gap: 8px; margin: 12px 0 14px; }
+.lb-classes .xp-btn { text-align: left; display: flex; align-items: center; gap: 10px; width: 100%; }
+.lb-classes .xp-btn kbd { font: inherit; font-size: 13px; color: inherit; opacity: 0.7; min-width: 1.2em; }
+.lb-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.lb-note { display: block; margin: 12px 0 4px; font-size: 14px; color: var(--ink-2); }
+.lb-input { width: 100%; min-height: 44px; padding: 0 10px; border: 1px solid #cfcfca; border-radius: 8px; font-size: 15px; }
+.lb-keys { margin: 4px 0 10px; }
+.lb-file { display: inline-flex; align-items: center; position: relative; overflow: hidden; }
+.lb-file input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.lb-file:focus-within { outline: 2px solid var(--focus); outline-offset: 2px; }

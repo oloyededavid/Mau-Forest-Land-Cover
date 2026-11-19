@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="only light">
+    <title>Mau Forest reference labelling</title>
+    <meta name="description" content="Label the stratified reference sample of the Mau Forest 2025 land-cover map on high-resolution imagery, then export the labels as CSV.">
+    <meta name="author" content="David Oloyede">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23111'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%231f6b35'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&amp;display=swap">
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=zodiak@500,700&amp;display=swap">
+    <link rel="stylesheet" href="vendor/leaflet-1.9.4/leaflet.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/label.css">
+</head>
+<body>
+<header class="lb-head">
+    <a class="lb-back" href="./">Back to the study</a>
+    <h1>Reference labelling</h1>
+</header>
+<main class="lb-main">
+    <section class="lb-intro" aria-label="Instructions">
+        <p>Each point is a random 20 m cell from the 2025 map, drawn within each mapped class. The map class is not shown, so you label blind. Label the class that covers most of the yellow square, using the imagery as close to 2025 as you can judge. Choose <b>Unclear</b> if the imagery is too old, cloudy or blurred to decide. The outer dashed square (60 m) is only for context.</p>
+        <p>Labels are kept in this browser while you work. Export the CSV when you finish, or to move to another browser, and save it as <code>reference/labels.csv</code> in the repository; <code>scripts/s09_accuracy.py</code> reads it. Please do not open <code>reference_sample.csv</code> while labelling: it holds the map classes.</p>
+    </section>
+    <div class="lb-grid">
+        <div id="lb-map" class="lb-map" role="region" aria-label="Imagery around the current point"></div>
+        <div class="lb-panel">
+            <p class="lb-point"><span id="lb-id">–</span> <span id="lb-pos" class="lb-muted"></span></p>
+            <div class="lb-progress" aria-hidden="true"><span id="lb-bar"></span></div>
+            <p id="lb-count" class="lb-muted" role="status"></p>
+            <div id="lb-classes" class="lb-classes" role="group" aria-label="Class"></div>
+            <label class="lb-note" for="lb-note">Note (optional)</label>
+            <input type="text" id="lb-note" class="lb-input" maxlength="200" autocomplete="off">
+            <div class="lb-nav">
+                <button type="button" class="xp-btn" id="lb-prev">Previous</button>
+                <button type="button" class="xp-btn" id="lb-next">Next</button>
+                <button type="button" class="xp-btn" id="lb-skip">Next unlabelled</button>
+                <button type="button" class="xp-btn" id="lb-zoom">Zoom to point</button>
+            </div>
+            <p class="lb-keys lb-muted">Keys: 1 to 6 choose a class, arrow keys or N and P move, U jumps to the next unlabelled point, Z zooms to the point.</p>
+            <label class="lb-note" for="lb-who">Interpreter initials</label>
+            <input type="text" id="lb-who" class="lb-input" maxlength="12" autocomplete="off">
+            <div class="lb-nav">
+                <button type="button" class="xp-btn" id="lb-export">Export CSV</button>
+                <label class="xp-btn lb-file">Import CSV<input type="file" id="lb-import" accept=".csv,text/csv"></label>
+                <button type="button" class="xp-btn" id="lb-clear">Clear all labels</button>
+            </div>
+            <p id="lb-msg" class="lb-muted" role="status"></p>
+        </div>
+    </div>
+</main>
+<script src="vendor/leaflet-1.9.4/leaflet.js"></script>
+<script src="assets/label.js"></script>
+</body>
+</html>
