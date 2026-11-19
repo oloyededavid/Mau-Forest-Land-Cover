@@ -253,7 +253,7 @@ def build():
         "dist_med_10": f"{fin['block_10km']['fold_distances_m']['mean_fold_median_distance']:,.0f}",
         "dist_med_random": f"{fin['random']['fold_distances_m']['mean_fold_median_distance']:.0f}",
         "cv_table": cv_table(cv), "area_table": area_table(areas, comp),
-        "forest_km2": km(M[forest_name]["area_km2"]), "forest_pct": pct(M[forest_name]["share"]),
+        "forest_km2": km(M[forest_name]["area_km2"]), "forest_pct": pct(M[forest_name]["share"], 1),
         "built_km2": km(M["Built-up"]["area_km2"]),
         "prob_forest": p2(M[forest_name]["mean_top_probability"]), "prob_built": p2(built_prob),
         "wc_forest_km2": km(A[forest_name]["worldcover2021"]), "es_forest_km2": km(A[forest_name]["esri2023"]),

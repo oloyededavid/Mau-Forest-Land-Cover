@@ -1,6 +1,6 @@
 """Figures drawn from the committed outputs only, so they can be rebuilt without the rasters in data/.
 
-    m05_samples   where the training cells and the reference sample lie (locations only: the sample stays blind)
+    m05_samples   where the training cells and the reference sample lie (locations only, no map class)
     m06_cv        agreement under random and spatially blocked cross-validation (cv.json)
     m07_areas     mapped area by class in this map, ESA WorldCover 2021 and Esri 2023 (comparison.json)
 
@@ -14,6 +14,7 @@ import textwrap
 from pathlib import Path
 
 import matplotlib
+import matplotlib.ticker
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
@@ -31,16 +32,18 @@ NOTE_CV = "Agreement with labels taken from where two existing maps agree, on un
 
 
 def heading(fig, title, subtitle, phone):
-    if phone and len(title) > 46:
-        title = textwrap.fill(title, 46)
-    fig.text(0.02, 0.965, title, fontsize=11 if phone else 13, fontweight="bold", color=INK, va="top")
-    fig.text(0.02, 0.925 if not phone else (0.89 if "\n" in title else 0.93), textwrap.fill(subtitle, 70 if phone else 120),
+    if phone and len(title) > 36:
+        title = textwrap.fill(title, 36, break_on_hyphens=False)
+    top = fig.text(0.03, 0.975, title, fontsize=10.5 if phone else 13, fontweight="bold", color=INK, va="top")
+    fig.canvas.draw()
+    y = fig.transFigure.inverted().transform(top.get_window_extent())[0][1] - 0.012
+    fig.text(0.03, y if phone else 0.925, textwrap.fill(subtitle, 56 if phone else 120),
              fontsize=7.5 if phone else 9, color=INK2, va="top")
 
 
 def credit(fig, text, phone):
-    fig.text(0.02, 0.008, textwrap.fill(f"{text} {AUTHOR}, {DATE}.", 95 if phone else 170),
-             fontsize=6.2 if phone else 7, color=INK2, va="bottom")
+    fig.text(0.03, 0.008, textwrap.fill(f"{text} {AUTHOR}, {DATE}.", 68 if phone else 170),
+             fontsize=6.5 if phone else 7, color=INK2, va="bottom")
 
 
 def samples():
@@ -55,9 +58,11 @@ def samples():
     cls = study.CANDIDATE_CLASSES
     for kind, (w, h, dpi) in SIZES.items():
         phone = kind == "phone"
-        fig = plt.figure(figsize=(w, 9.6 if phone else 6.4), dpi=dpi)
         if phone:
-            axes = [fig.add_axes([0.11, 0.49, 0.82, 0.29]), fig.add_axes([0.11, 0.14, 0.82, 0.29])]
+            w, dpi = 3.9, 215
+        fig = plt.figure(figsize=(w, 7.4 if phone else 6.4), dpi=dpi)
+        if phone:
+            axes = [fig.add_axes([0.14, 0.47, 0.76, 0.3]), fig.add_axes([0.14, 0.13, 0.76, 0.3])]
         else:
             axes = [fig.add_axes([0.06, 0.12, 0.42, 0.68]), fig.add_axes([0.55, 0.12, 0.42, 0.68])]
         a0, a1 = axes
@@ -79,11 +84,11 @@ def samples():
         handles.append(Line2D([], [], marker="o", ls="", markerfacecolor="white", markeredgecolor=INK,
                               label="Reference point (no class shown)", markersize=5))
         fig.legend(handles=handles, loc="lower left", bbox_to_anchor=(0.02, 0.045 if phone else 0.035),
-                   ncol=2 if phone else 6, frameon=False, fontsize=7 if phone else 8)
+                   ncol=2 if phone else 6, frameon=False, fontsize=6.8 if phone else 8)
         heading(fig, "Where the training cells and the reference sample lie",
                 "Training cells: where ESA WorldCover 2021 and Esri 2023 agree in a uniform neighbourhood, up to 4,000 "
                 "per class, before plantation was merged into forest. Reference points: the stratified sample for the "
-                "accuracy assessment, shown without their map class so labelling stays blind.", phone)
+                "accuracy assessment, shown without their map class.", phone)
         credit(fig, "Map covers the study box, not the legal forest boundary. WGS 84 / UTM zone 36S (EPSG:32736).", phone)
         save(fig, "m05_samples" + ("_phone" if phone else ""))
 
@@ -93,11 +98,11 @@ def cv_chart():
     series = [("final_scheme", "random_forest", "Random forest, final classes", INK, "-", "o"),
               ("final_scheme", "gradient_boosting", "Gradient boosting, final classes", "#4b6e9c", "--", "s"),
               ("candidate_scheme", "random_forest", "Random forest, plantation kept", "#b3361b", "-", "^")]
-    for kind, (w, h, dpi) in {"desktop": (10, 4.8, 200), "phone": (5.6, 5.4, 150)}.items():
+    for kind, (w, h, dpi) in {"desktop": (10, 4.8, 200), "phone": (3.9, 4.6, 215)}.items():
         phone = kind == "phone"
         fig, ax = plt.subplots(figsize=(w, h), dpi=dpi)
-        fig.subplots_adjust(left=0.12 if phone else 0.08, right=0.97, top=0.78 if not phone else 0.74,
-                            bottom=0.3 if phone else 0.2)
+        fig.subplots_adjust(left=0.16 if phone else 0.08, right=0.95, top=0.78 if not phone else 0.7,
+                            bottom=0.33 if phone else 0.24)
         x = np.arange(len(FOLDS))
         lows = [cv[sc]["results"][k]["models"][m]["overall_accuracy"] for sc, m, *_ in series for k, _ in FOLDS]
         for scheme, model, label, colour, ls, mk in series:
@@ -106,16 +111,17 @@ def cv_chart():
             for xi, yi in zip(x, y):
                 ax.annotate(f"{yi:.2f}", (xi, yi), xytext=(0, 7 if mk == "s" else -12), textcoords="offset points",
                             ha="center", fontsize=6.5 if phone else 7.5, color=colour)
-        ax.set_xticks(x, [l for _, l in FOLDS], fontsize=8 if phone else 9)
+        ax.set_xticks(x, [l.replace(' blocks', '') if phone else l for _, l in FOLDS], fontsize=8 if phone else 9)
         ax.set_ylabel("Overall agreement")
         ax.set_ylim(np.floor(min(lows) * 50) / 50 - 0.01, 1.0)
         ax.grid(axis="y", color="#e5e5e1", lw=0.6)
         ax.spines[["top", "right"]].set_visible(False)
-        ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.14 if not phone else -0.17), ncol=1 if phone else 3,
-                  frameon=False, fontsize=7.5 if phone else 8.5)
+        ax.legend(loc="upper center", bbox_to_anchor=(0.45, -0.12 if not phone else -0.14), ncol=1 if phone else 3,
+                  frameon=False, fontsize=7 if phone else 8.5)
         heading(fig, "Cross-validated agreement, random against spatially blocked folds",
                 f"Five folds, {cv['n_samples']:,} training cells. Blocks hold out whole areas of 5, 10 or 20 km. " + NOTE_CV,
                 phone)
+        credit(fig, "Source: outputs/cv.json; the y-axis does not start at zero.", phone)
         save(fig, "m06_cv" + ("_phone" if phone else ""))
 
 
@@ -124,11 +130,11 @@ def areas_chart():
     classes = [k for k in c if not k.startswith("Other")]
     products = [("worldcover2021", "ESA WorldCover 2021", "#b9b8b1"), ("this_map", "This map, 2025", INK),
                 ("esri2023", "Esri land cover 2023", "#7d7c76")]
-    for kind, (w, h, dpi) in {"desktop": (10, 4.8, 200), "phone": (5.6, 6.2, 150)}.items():
+    for kind, (w, h, dpi) in {"desktop": (10, 4.8, 200), "phone": (3.9, 5.4, 215)}.items():
         phone = kind == "phone"
         fig, ax = plt.subplots(figsize=(w, h), dpi=dpi)
-        fig.subplots_adjust(left=0.3 if phone else 0.22, right=0.95, top=0.8 if not phone else 0.78,
-                            bottom=0.18 if phone else 0.12)
+        fig.subplots_adjust(left=0.3 if phone else 0.22, right=0.93, top=0.8 if not phone else 0.72,
+                            bottom=0.14 if phone else 0.16)
         y = np.arange(len(classes))
         hgt = 0.26
         for i, (key, label, colour) in enumerate(products):
@@ -139,6 +145,7 @@ def areas_chart():
         ax.set_yticks(y, [textwrap.fill(k, 18) for k in classes], fontsize=7.5 if phone else 9)
         ax.invert_yaxis()
         ax.set_xlabel("Area inside the study box (km²)")
+        ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{v:,.0f}"))
         ax.spines[["top", "right"]].set_visible(False)
         ax.grid(axis="x", color="#e5e5e1", lw=0.6)
         ax.set_axisbelow(True)
@@ -146,6 +153,7 @@ def areas_chart():
         heading(fig, "Mapped area by class in three land-cover maps",
                 "Pixel counts after translating each map into the same classes; not area estimates with confidence "
                 "intervals, which wait for the reference sample.", phone)
+        credit(fig, "ESA WorldCover 2021, Esri / Impact Observatory 2023 and this map; source: outputs/comparison.json.", phone)
         save(fig, "m07_areas" + ("_phone" if phone else ""))
 
 

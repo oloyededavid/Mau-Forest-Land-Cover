@@ -30,7 +30,7 @@ We used Sentinel-2 Level-2A surface reflectance (Drusch et al., 2012) from the M
 
 ## 2.3 Classes and training labels
 
-The candidate classes were forest, plantation forest, cropland and grassland, built-up, water and wetland, and bare ground. Training labels come from existing maps, not from field visits or image interpretation. A cell is labelled where ESA WorldCover 2021 v200 (Zanaga et al., 2022), aggregated to 20 m by the most common value, and the Esri / Impact Observatory annual land cover map for 2023 (Karra et al., 2021) put it in the same class, and where its whole 3 × 3 neighbourhood carries the same label, which keeps mixed edge cells out. The two maps agree, before the neighbourhood rule, on {{share_agree_pct}}% of the box. Neither map has a plantation class, so tree cells were split with the global forest management map for 2015 (Lesiv et al., 2022): plantation forest where it shows planted or plantation forest, forest where it shows naturally regenerating forest. Tree cells it calls agroforestry, which covers {{fml_agro_pct}}% of the box, got no tree label. Tree cells with Hansen loss in 2021–2024 were dropped, because the maps may predate the loss. From the eligible cells we drew a stratified random sample of up to {{n_per_class}} cells per class ({{n_train}} cells in all).
+The candidate classes were forest, plantation forest, cropland and grassland, built-up, water and wetland, and bare ground. Training labels come from existing maps, not from field visits or image interpretation. A cell is labelled where ESA WorldCover 2021 v200 (Zanaga et al., 2022), aggregated to 20 m by the most common value, and the Esri / Impact Observatory annual land cover map for 2023 (Karra et al., 2021) put it in the same class, and where its whole 3 × 3 neighbourhood carries the same label, which keeps mixed edge cells out. The two maps agree, before the neighbourhood rule, on {{share_agree_pct}}% of the box. Neither map has a plantation class, so tree cells were split with the global forest management map for 2015 (Lesiv et al., 2022): plantation forest where it shows planted or plantation forest, forest where it shows naturally regenerating forest. Tree cells it calls agroforestry, which covers {{fml_agro_pct}}% of the box, received no tree label. Tree cells with Hansen loss in 2021–2024 were dropped, because the maps may predate the loss. From the eligible cells we drew a stratified random sample of up to {{n_per_class}} cells per class ({{n_train}} cells in all).
 
 The class scheme was then set from what the data separate, by a rule written into the code before cross-validation was run (not pre-registered): plantation forest stays a class only if its precision and recall both reach {{threshold}} under 10 km blocked cross-validation with the random forest; otherwise its cells become forest.
 
@@ -40,7 +40,7 @@ The map is made with a random forest (Breiman, 2001) of 300 trees, at least two 
 
 ## 2.5 Comparison maps
 
-WorldCover 2021 and Esri 2023 were translated into the study's classes (WorldCover tree cover to forest; shrubland, grassland and cropland to cropland and grassland; built-up; water, herbaceous wetland and mangroves to water and wetland; Esri trees, crops and rangeland, built area, water and flooded vegetation in the same way; bare ground to other) and compared cell by cell with the 2025 map. Hansen Global Forest Change v1.12 (Hansen et al., 2013) gives tree cover in 2000 and the year of stand-replacing loss from 2001 to 2024. It is a separate product with its own definition of trees, and loss includes plantation harvest, so it is used as context, not as a check. Loss areas by year are computed on the Hansen grid inside the box.
+WorldCover 2021 and Esri 2023 were translated into the study's classes (WorldCover tree cover to forest; shrubland, grassland and cropland to cropland and grassland; built-up; water, herbaceous wetland and mangroves to water and wetland; Esri trees, crops and rangeland, built area, water and flooded vegetation in the same way; bare ground to bare or other) and compared cell by cell with the 2025 map. Hansen Global Forest Change v1.12 (Hansen et al., 2013) gives tree cover in 2000 and the year of stand-replacing loss from 2001 to 2024. It is a separate product with its own definition of trees, and loss includes plantation harvest, so it is used as context, not as a check. Loss areas by year are computed on the Hansen grid inside the box.
 
 ## 2.6 Reference data and the planned accuracy assessment
 
@@ -54,13 +54,13 @@ Instead, we drew a stratified random sample from the 2025 map with the map class
 
 ![**Figure 1.** Sentinel-2 median composite for January to March 2025, true colour. The forest blocks of the Mau Forest Complex are the dark green areas; Lake Nakuru is at the right edge.](paper/figures/fig1_composite.jpg)
 
-The composite has no gaps worth noting: {{clear_zero_pct}}% of cells in the box have no clear observation. Eligible training cells were plentiful for forest ({{elig_forest}}), cropland and grassland ({{elig_crop}}), built-up land ({{elig_built}}) and water and wetland ({{elig_water}}), but plantation forest had only {{elig_plant}} cells and bare ground had none after the neighbourhood rule ({{agree_bare}} agreeing cells before it), so no bare class was trained. Figure 2 shows where the training cells and the reference points lie.
+The composite (Figure 1) has no gaps worth noting: {{clear_zero_pct}}% of cells in the box have no clear observation. Eligible training cells were plentiful for forest ({{elig_forest}}), cropland and grassland ({{elig_crop}}), built-up land ({{elig_built}}) and water and wetland ({{elig_water}}), but plantation forest had only {{elig_plant}} cells and bare ground had none after the neighbourhood rule ({{agree_bare}} agreeing cells before it), so no bare class was trained. Figure 2 shows where the training cells and the reference points lie.
 
-![**Figure 2.** Where the training cells (left) and the reference sample (right) lie. Training cells are where ESA WorldCover 2021 and Esri 2023 agree in a uniform neighbourhood, before plantation was merged into forest; reference points are shown without their map class, so labelling stays blind.](paper/figures/fig_samples.jpg)
+![**Figure 2.** Where the training cells (left) and the reference sample (right) lie. Training cells are where ESA WorldCover 2021 and Esri 2023 agree in a uniform neighbourhood, before plantation was merged into forest; reference points are shown without their map class (the oversampled small strata still show as clusters).](paper/figures/fig_samples.jpg)
 
 ## 3.2 Class scheme and cross-validation
 
-With the plantation class kept, both classifiers agree well with the labels under random cross-validation, but blocked cross-validation shows that plantations are mostly confused with forest in places the model has not seen (Table 1). Plantation recall falls from {{c_plant_rec_random}} with random folds to {{plant_rec}} with 10 km blocks, and forest precision from {{c_forest_prec_random}} to {{c_forest_prec_block10}}, because plantation cells are predicted as forest. The plantation class therefore failed the rule and was merged with forest. With the available plantation labels ({{plant_share_pct}}% of the box in the 2015 100 m map), plantations could not be separated from natural forest.
+With the plantation class kept, both classifiers agree well with the labels under random cross-validation, but blocked cross-validation shows that plantations are mostly confused with forest in places the model has not seen (Table 1, Figure 3). Plantation recall falls from {{c_plant_rec_random}} with random folds to {{plant_rec}} with 10 km blocks, and forest precision from {{c_forest_prec_random}} to {{c_forest_prec_block10}}, because plantation cells are predicted as forest. The plantation class therefore failed the rule and was merged with forest. With the available plantation labels ({{plant_share_pct}}% of the box in the 2015 100 m map), plantations could not be separated from natural forest.
 
 Table 1. Cross-validated agreement with map-agreement labels, random forest, with the plantation class kept (candidate scheme) and in the final scheme. Values pool the out-of-fold predictions of five folds.
 
@@ -78,7 +78,7 @@ Table 2. Mapped area by class in 2025 (cell counts × 0.0004 km²). These are ma
 
 {{area_table}}
 
-The mean top-class probability of the random forest is {{prob_forest}} for forest and {{prob_built}} for built-up cells. Built-up land is the least certain class and the one where the maps differ most.
+The mean top-class probability of the random forest is {{prob_forest}} for forest and {{prob_built}} for built-up cells. Built-up land is the least certain class (Figure 4) and the one where the maps differ most.
 
 ## 3.4 Comparison with WorldCover, Esri and Hansen
 
@@ -106,7 +106,7 @@ With labels from two existing maps, the dry-season composite separates forest, o
 
 The small gap between random and blocked agreement in the final scheme should not be read as proof that spatial autocorrelation is harmless here. The training cells are uniform patches on which two maps agree, the classes left are spectrally distinct in the dry season, and the blocks have no buffer. The test that would show how the map performs on the hard cells, the mixed farm and woodland mosaics where the maps disagree, is the independent reference sample, which is still to be labelled.
 
-The comparison maps disagree most in the farm mosaic around the forest. WorldCover counts more of it as tree cover and the Esri map counts more as crops and built area. This map, trained on cells where they agree, falls between them: {{forest_wc_pct}}% of its forest cells are tree cover in WorldCover against {{forest_es_pct}}% in the Esri map, and {{crop_es_pct}}% of its cropland and grassland cells are crops or rangeland in the Esri map against {{crop_wc_pct}}% in WorldCover. Because the training labels are the cells where these two maps agree, this agreement is partly built in and is not evidence of accuracy. Which map is closer to the ground cannot be settled by comparing maps.
+The comparison maps disagree most in the farm mosaic around the forest. WorldCover counts more of it as tree cover and the Esri map counts more as crops and built area. This map, trained on cells where they agree, falls between them: {{forest_wc_pct}}% of its forest cells are tree cover in WorldCover against {{forest_es_pct}}% in the Esri map, and {{crop_es_pct}}% of its cropland and grassland cells are crops or rangeland in the Esri map against {{crop_wc_pct}}% in WorldCover. This agreement is partly built in, as noted above. Which map is closer to the ground cannot be settled by comparing maps.
 
 # 5. Limitations
 
@@ -118,7 +118,7 @@ A random forest trained on map-agreement labels maps forest, cropland and grassl
 
 # Data and code availability
 
-Code is released under the MIT licence and derived data under CC BY 4.0, from <https://github.com/oloyededavid/Mau-Forest-Land-Cover>. Every number in this paper is read from the files in `outputs/` that the scripts write. Source data keep their own terms: Copernicus Sentinel-2 and DEM, ESA WorldCover (CC BY 4.0), Esri / Impact Observatory land cover (CC BY 4.0), Hansen Global Forest Change (CC BY 4.0), the forest management map and the Geo-Wiki reference data (CC BY 4.0).
+Code (MIT licence) and derived data (CC BY 4.0) are available from <https://github.com/oloyededavid/Mau-Forest-Land-Cover>. Every result in this paper is read from the files in `outputs/` that the scripts write. Source data keep their own terms: Copernicus Sentinel-2 and DEM, ESA WorldCover (CC BY 4.0), Esri / Impact Observatory land cover (CC BY 4.0), Hansen Global Forest Change (CC BY 4.0), the forest management map and the Geo-Wiki reference data (CC BY 4.0).
 
 # References
 
