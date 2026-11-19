@@ -56,7 +56,7 @@ Instead, we drew a stratified random sample from the 2025 map with the map class
 
 The composite (Figure 1) has no gaps worth noting: {{clear_zero_pct}}% of cells in the box have no clear observation. Eligible training cells were plentiful for forest ({{elig_forest}}), cropland and grassland ({{elig_crop}}), built-up land ({{elig_built}}) and water and wetland ({{elig_water}}), but plantation forest had only {{elig_plant}} cells and bare ground had none after the neighbourhood rule ({{agree_bare}} agreeing cells before it), so no bare class was trained. Figure 2 shows where the training cells and the reference points lie.
 
-![**Figure 2.** Where the training cells (left) and the reference sample (right) lie. Training cells are where ESA WorldCover 2021 and Esri 2023 agree in a uniform neighbourhood, before plantation was merged into forest; reference points are shown without their map class (the oversampled small strata still show as clusters).](paper/figures/fig_samples.jpg)
+![**Figure 2.** Where the training cells and the reference sample lie. Training cells are where ESA WorldCover 2021 and Esri 2023 agree in a uniform neighbourhood, before plantation was merged into forest; reference points are shown without their map class (the oversampled small strata still show as clusters).](paper/figures/fig_samples.jpg)
 
 ## 3.2 Class scheme and cross-validation
 
