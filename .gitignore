@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+.DS_Store
+
+# Downloads and large rasters (composite, layers, classified map); rebuild with scripts/s01 to s07
+data/
+paper/_page_body.md
