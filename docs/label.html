@@ -22,8 +22,20 @@
 </header>
 <main class="lb-main">
     <section class="lb-intro" aria-label="Instructions">
-        <p>Each point is a random 20 m cell from the 2025 map, drawn within each mapped class. The map class is not shown, so you label blind. Label the class that covers most of the yellow square, using the imagery as close to 2025 as you can judge. Choose <b>Unclear</b> if the imagery is too old, cloudy or blurred to decide. The outer dashed square (60 m) is only for context.</p>
-        <p>Labels are kept in this browser while you work. Export the CSV when you finish, or to move to another browser, and save it as <code>reference/labels.csv</code> in the repository; <code>scripts/s09_accuracy.py</code> reads it. Please do not open <code>reference_sample.csv</code> while labelling: it holds the map classes.</p>
+        <p>Each point is a random 20 m cell from the 2025 map, drawn within each mapped class. The map class of each point is not shown. Label the class that covers most of the yellow square; the outer dashed square (60 m) is only for context.</p>
+        <details class="lb-protocol" open>
+            <summary>Labelling protocol</summary>
+            <dl class="glossary">
+            <dt>Forest (natural and plantation)</dt><dd>Tree crowns cover the largest part of the yellow square: natural forest, tree plantations (pine, cypress, eucalyptus) and woodlots. Scattered trees over fields, covering less of the square than the crops, are cropland.</dd>
+            <dt>Cropland and grassland</dt><dd>Fields, fallow, pasture, grassland and shrubland, and tea. Tea counts here even though it is a woody crop.</dd>
+            <dt>Built-up</dt><dd>Buildings, roads, paved yards and other sealed surfaces cover the largest part of the square.</dd>
+            <dt>Water and wetland</dt><dd>Open water, or flooded or wetland vegetation (reeds, swamp), as in WorldCover's herbaceous wetland and the Esri map's flooded vegetation.</dd>
+            <dt>Bare or other</dt><dd>Bare soil, rock or sand with no crop pattern. A ploughed field with clear field edges is cropland.</dd>
+            <dt>Unclear</dt><dd>The imagery is cloudy, blurred or too coarse, the square seems to have changed and the 2025 state cannot be judged, or two classes cover it equally.</dd>
+            </dl>
+            <p>Mixed squares: choose the class that covers the largest part of the yellow square. Imagery date: the basemap date is not shown and may be several years old; label what it shows, unless it shows clear signs of recent change (fresh clearing, construction), in which case choose Unclear.</p>
+        </details>
+        <p>Labels are kept in this browser while you work. Export the CSV when you finish, or to move to another browser, and save it as <code>reference/labels.csv</code> in the repository; <code>scripts/s09_accuracy.py</code> reads it. Please do not open <code>outputs/reference_sample.csv</code> while labelling: it holds the map classes.</p>
     </section>
     <div class="lb-grid">
         <div id="lb-map" class="lb-map" role="region" aria-label="Imagery around the current point"></div>

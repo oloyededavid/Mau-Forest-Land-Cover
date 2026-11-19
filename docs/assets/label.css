@@ -23,3 +23,7 @@
 .lb-file { display: inline-flex; align-items: center; position: relative; overflow: hidden; }
 .lb-file input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
 .lb-file:focus-within { outline: 2px solid var(--focus); outline-offset: 2px; }
+.lb-protocol { max-width: 900px; margin: 6px 0 12px; font-size: 15px; }
+.lb-protocol summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-weight: 600; }
+.lb-protocol p { font-size: 14px; color: var(--ink-2); }
+.lb-protocol .glossary dt, .lb-protocol .glossary dd { font-size: 14px; padding: 7px 0; }
