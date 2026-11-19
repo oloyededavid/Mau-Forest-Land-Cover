@@ -1,0 +1,172 @@
+{
+ "classes": [
+  {
+   "code": 1,
+   "name": "Forest (natural and plantation)",
+   "colour": "#1f6b35"
+  },
+  {
+   "code": 3,
+   "name": "Cropland and grassland",
+   "colour": "#e8d58a"
+  },
+  {
+   "code": 4,
+   "name": "Built-up",
+   "colour": "#c0392b"
+  },
+  {
+   "code": 5,
+   "name": "Water and wetland",
+   "colour": "#2c7fb8"
+  }
+ ],
+ "layers": [
+  {
+   "id": "this_map",
+   "name": "This study, 2025",
+   "file": "data/overlays/this_map.png",
+   "bounds": [
+    [
+     -0.950338,
+     35.299634
+    ],
+    [
+     -0.149783,
+     36.100733
+    ]
+   ],
+   "legend": [
+    [
+     "Forest (natural and plantation)",
+     "#1f6b35"
+    ],
+    [
+     "Cropland and grassland",
+     "#e8d58a"
+    ],
+    [
+     "Built-up",
+     "#c0392b"
+    ],
+    [
+     "Water and wetland",
+     "#2c7fb8"
+    ]
+   ]
+  },
+  {
+   "id": "worldcover2021",
+   "name": "ESA WorldCover 2021",
+   "file": "data/overlays/worldcover2021.png",
+   "bounds": [
+    [
+     -0.950338,
+     35.299634
+    ],
+    [
+     -0.149783,
+     36.100733
+    ]
+   ],
+   "legend": [
+    [
+     "Forest (natural and plantation)",
+     "#1f6b35"
+    ],
+    [
+     "Cropland and grassland",
+     "#e8d58a"
+    ],
+    [
+     "Built-up",
+     "#c0392b"
+    ],
+    [
+     "Water and wetland",
+     "#2c7fb8"
+    ],
+    [
+     "Bare or other",
+     "#9a8f85"
+    ]
+   ]
+  },
+  {
+   "id": "esri2023",
+   "name": "Esri land cover 2023",
+   "file": "data/overlays/esri2023.png",
+   "bounds": [
+    [
+     -0.950338,
+     35.299634
+    ],
+    [
+     -0.149783,
+     36.100733
+    ]
+   ],
+   "legend": [
+    [
+     "Forest (natural and plantation)",
+     "#1f6b35"
+    ],
+    [
+     "Cropland and grassland",
+     "#e8d58a"
+    ],
+    [
+     "Built-up",
+     "#c0392b"
+    ],
+    [
+     "Water and wetland",
+     "#2c7fb8"
+    ],
+    [
+     "Bare or other",
+     "#9a8f85"
+    ]
+   ]
+  },
+  {
+   "id": "hansen",
+   "name": "Hansen tree cover loss 2001\u20132024",
+   "file": "data/overlays/hansen.png",
+   "bounds": [
+    [
+     -0.950338,
+     35.299634
+    ],
+    [
+     -0.149783,
+     36.100733
+    ]
+   ],
+   "legend": [
+    [
+     "2001\u20132008",
+     "#fdd49e"
+    ],
+    [
+     "2009\u20132016",
+     "#fc8d59"
+    ],
+    [
+     "2017\u20132024",
+     "#b30000"
+    ]
+   ]
+  }
+ ],
+ "box": [
+  [
+   -0.95,
+   35.3
+  ],
+  [
+   -0.15,
+   36.1
+  ]
+ ]
+}
