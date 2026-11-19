@@ -12,7 +12,7 @@ A land-cover map of a box around the Mau Forest Complex for 2025, made with a ra
 - **Training labels come from existing maps**: cells where WorldCover 2021 and Esri 2023 agree, in uniform 3 × 3 neighbourhoods, with tree cover split by a 2015 forest management map (Lesiv et al., 2022). No labels were drawn by hand and there are no field data.
 - Cross-validated accuracy is agreement with those labels on easy cells. **It is not map accuracy.**
 - A plantation class was tried and failed a rule fixed in advance under 10 km blocked cross-validation, so plantations (and some tea) are mapped as forest. No bare class could be trained.
-- No open reference data set had enough independent points inside the box (`outputs/reference_search.json`). **Accuracy and stratified area estimates are pending** a labelled stratified sample. The study ships the sample (`outputs/reference_sample.csv`) and a labelling tool (`docs/label.html`). Until the labels are added, the paper and page say "pending the reference sample" and report no such numbers.
+- No open reference data set had enough independent points inside the box (`outputs/reference_search.json`). **Accuracy and stratified area estimates are pending** a labelled stratified sample. The study ships the sample (`outputs/reference_sample.csv`, which holds each point's map class, so do not open it before labelling; the labelling tool reads `docs/data/label_points.json`, which has locations only) and a labelling tool (`docs/label.html`). Until the labels are added, the paper and page say "pending the reference sample" and report no such numbers.
 - The composite covers one dry season (January–March 2025). Hansen loss is a separate product and is used as context only.
 
 ## Data

@@ -17,7 +17,7 @@ The source datasets keep their own terms, which apply to anything derived from t
 | Esri / Impact Observatory annual land cover (io-lulc-annual-v02) | CC BY 4.0 (Impact Observatory, Microsoft and Esri) |
 | Hansen Global Forest Change v1.12 | CC BY 4.0 (Hansen / UMD / Google / USGS / NASA) |
 | Global forest management data 2015 (Lesiv et al.) | CC BY 4.0 |
-| Geo-Wiki reference data (Fritz et al., 2017; Lesiv et al., 2025) | CC BY 4.0; the rows inside the study box are kept in `outputs/reference_lesiv2015_box.csv` |
+| Geo-Wiki reference data: Fritz et al. (2016), PANGAEA, CC BY 3.0; Lesiv et al. (2025), Zenodo, CC BY 4.0 | the rows inside the study box are kept in `outputs/reference_lesiv2015_box.csv` |
 | Esri World Imagery (basemap on the page and the labelling tool) | Esri terms of use; tiles are displayed, not redistributed |
 
 The code in this repository is licensed separately under the MIT licence (`LICENSE`).

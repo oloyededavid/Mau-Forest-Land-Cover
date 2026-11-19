@@ -261,6 +261,7 @@ def build():
         "agree_wc_pct": pct(comp["agree_with_worldcover"]), "agree_es_pct": pct(comp["agree_with_esri"]),
         "agree_both_pct": pct(comp["agree_with_both"]), "agree_neither_pct": pct(comp["agree_with_neither"]),
         "wc_es_pct": pct(comp["worldcover_agree_with_esri"]), "dis_km2": km(side["cells_km2"]),
+        "plant_as_forest_pct": pct(cv["candidate_scheme"]["results"]["block_10km"]["models"]["random_forest"]["confusion_matrix"][1][0] / sum(cv["candidate_scheme"]["results"]["block_10km"]["models"]["random_forest"]["confusion_matrix"][1])),
         "side_es_pct": pct(side["with_esri"]), "side_wc_pct": pct(side["with_worldcover"]),
         "top1_km2": km(t1["area_km2"]), "top2_km2": km(t2["area_km2"]),
         "forest_wc_pct": pct(pcmp[forest_name]["share_agreeing_with_worldcover"]),
