@@ -1,0 +1,39 @@
+{
+  "target_overall_se": 0.015,
+  "min_per_class": 75,
+  "expected_users_accuracy": {
+    "Forest (natural and plantation)": 0.9,
+    "Cropland and grassland": 0.85,
+    "Built-up": 0.7,
+    "Water and wetland": 0.9
+  },
+  "mapped_share": {
+    "Forest (natural and plantation)": 0.3646660404114138,
+    "Cropland and grassland": 0.6045646320875465,
+    "Built-up": 0.024228837441937608,
+    "Water and wetland": 0.006540490059102121
+  },
+  "formula_sample_size": 509,
+  "total_sample_size": 644,
+  "allocation": {
+    "Forest (natural and plantation)": 186,
+    "Cropland and grassland": 308,
+    "Built-up": 75,
+    "Water and wetland": 75
+  },
+  "proportional_allocation": {
+    "Forest (natural and plantation)": 186,
+    "Cropland and grassland": 308,
+    "Built-up": 12,
+    "Water and wetland": 3
+  },
+  "formula_sample_size_at_se_0_01": 1145,
+  "label_classes": [
+    "Forest (natural and plantation)",
+    "Cropland and grassland",
+    "Built-up",
+    "Water and wetland",
+    "Bare or other",
+    "Unclear"
+  ]
+}

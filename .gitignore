@@ -7,5 +7,5 @@ venv/
 .DS_Store
 
 # Downloads and large rasters (composite, layers, classified map); rebuild with scripts/s01 to s07
-data/
+/data/
 paper/_page_body.md
