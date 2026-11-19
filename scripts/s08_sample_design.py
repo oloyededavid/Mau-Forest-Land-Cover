@@ -86,6 +86,9 @@ def main():
         "allocation": dict(zip(names, [int(v) for v in alloc["recommended_allocation"]])),
         "proportional_allocation": dict(zip(names, [int(v) for v in alloc["proportional_allocation"]])),
         "formula_sample_size_at_se_0_01": alloc_01["formula_sample_size"],
+        # expected 95% half-width of each user's accuracy with the allocated points, if U_i holds
+        "expected_users_ci_halfwidth": dict(zip(names, (1.959964 * np.sqrt(ua * (1 - ua) / (np.asarray(
+            alloc["recommended_allocation"], dtype=float) - 1))).tolist())),
         "label_classes": label_classes,
     }
     (study.OUT / "sample_design.json").write_text(json.dumps(design, indent=2))
