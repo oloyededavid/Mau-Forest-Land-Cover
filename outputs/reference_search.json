@@ -1,0 +1,28 @@
+{
+  "fritz2017": {
+    "dataset": "Fritz et al. (2017) Geo-Wiki crowdsourced reference data, 2011-2012",
+    "doi": "10.1594/PANGAEA.869682",
+    "records_global": 151942,
+    "records_in_box": 11,
+    "locations_in_box": 6
+  },
+  "lesiv2025": {
+    "dataset": "Lesiv et al. (2025) global reference data set for land cover at 10 m, reference year 2015",
+    "doi": "10.5281/zenodo.14871660",
+    "records_global": 16569600,
+    "records_in_box": 2100,
+    "sites_in_box": 21,
+    "classes_in_box": {
+      "crops": 1010,
+      "tree": 400,
+      "grassland": 236,
+      "shrub": 231,
+      "urban/built-up": 139,
+      "fallow/shifting cultivation": 54,
+      "bare": 30
+    }
+  },
+  "target_points": 100,
+  "enough_for_accuracy": false,
+  "reason": "Too few sites inside the box, collected for other years (2011-2012 and 2015) and not drawn from the strata of this map, so they cannot give unbiased accuracy or area estimates for 2025."
+}

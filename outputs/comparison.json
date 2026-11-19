@@ -1,0 +1,425 @@
+{
+  "compared_km2": 7888.5832,
+  "agree_with_worldcover": 0.8253219919135796,
+  "agree_with_esri": 0.8408862569897215,
+  "agree_with_both": 0.7261516364560876,
+  "agree_with_neither": 0.059943387552786415,
+  "worldcover_agree_with_esri": 0.7688598885538788,
+  "areas_km2": {
+    "Forest (natural and plantation)": {
+      "this_map": 2876.6984,
+      "worldcover2021": 3593.5956,
+      "esri2023": 2375.8512
+    },
+    "Cropland and grassland": {
+      "this_map": 4769.1584,
+      "worldcover2021": 4170.5624,
+      "esri2023": 5020.6452
+    },
+    "Built-up": {
+      "this_map": 191.1312,
+      "worldcover2021": 73.9328,
+      "esri2023": 446.13
+    },
+    "Water and wetland": {
+      "this_map": 51.595200000000006,
+      "worldcover2021": 47.7372,
+      "esri2023": 45.78
+    },
+    "Other (bare, cloud)": {
+      "this_map": 0.0,
+      "worldcover2021": 2.7552000000000003,
+      "esri2023": 0.1768
+    }
+  },
+  "per_class": {
+    "Forest (natural and plantation)": {
+      "share_agreeing_with_worldcover": 0.9058374697882823,
+      "share_agreeing_with_esri": 0.7614947747042234,
+      "share_agreeing_with_both": 0.7242851735864976
+    },
+    "Cropland and grassland": {
+      "share_agreeing_with_worldcover": 0.7961897847637017,
+      "share_agreeing_with_esri": 0.900601582031748,
+      "share_agreeing_with_both": 0.7434146871699627
+    },
+    "Built-up": {
+      "share_agreeing_with_worldcover": 0.32116996073901066,
+      "share_agreeing_with_esri": 0.5368793791908385,
+      "share_agreeing_with_both": 0.28556091313192195
+    },
+    "Water and wetland": {
+      "share_agreeing_with_worldcover": 0.8965795267776847,
+      "share_agreeing_with_esri": 0.8738099668186188,
+      "share_agreeing_with_both": 0.8666620150711694
+    }
+  },
+  "vs_worldcover_km2": {
+    "Forest (natural and plantation)": {
+      "Forest (natural and plantation)": 2605.8212000000003,
+      "Cropland and grassland": 269.6676,
+      "Built-up": 0.36000000000000004,
+      "Water and wetland": 0.8364,
+      "Other (bare, cloud)": 0.0132
+    },
+    "Cropland and grassland": {
+      "Forest (natural and plantation)": 959.1044,
+      "Cropland and grassland": 3797.1552,
+      "Built-up": 12.173200000000001,
+      "Water and wetland": 0.5548000000000001,
+      "Other (bare, cloud)": 0.1708
+    },
+    "Built-up": {
+      "Forest (natural and plantation)": 24.7288,
+      "Cropland and grassland": 102.61200000000001,
+      "Built-up": 61.385600000000004,
+      "Water and wetland": 0.0868,
+      "Other (bare, cloud)": 2.318
+    },
+    "Water and wetland": {
+      "Forest (natural and plantation)": 3.9412000000000003,
+      "Cropland and grassland": 1.1276000000000002,
+      "Built-up": 0.014,
+      "Water and wetland": 46.2592,
+      "Other (bare, cloud)": 0.25320000000000004
+    }
+  },
+  "vs_esri_km2": {
+    "Forest (natural and plantation)": {
+      "Forest (natural and plantation)": 2190.5908,
+      "Cropland and grassland": 635.8788000000001,
+      "Built-up": 49.906400000000005,
+      "Water and wetland": 0.31920000000000004,
+      "Other (bare, cloud)": 0.0032
+    },
+    "Cropland and grassland": {
+      "Forest (natural and plantation)": 180.36520000000002,
+      "Cropland and grassland": 4295.1116,
+      "Built-up": 293.37600000000003,
+      "Water and wetland": 0.2828,
+      "Other (bare, cloud)": 0.0228
+    },
+    "Built-up": {
+      "Forest (natural and plantation)": 2.0596,
+      "Cropland and grassland": 86.2172,
+      "Built-up": 102.6144,
+      "Water and wetland": 0.0936,
+      "Other (bare, cloud)": 0.1464
+    },
+    "Water and wetland": {
+      "Forest (natural and plantation)": 2.8356000000000003,
+      "Cropland and grassland": 3.4376,
+      "Built-up": 0.23320000000000002,
+      "Water and wetland": 45.0844,
+      "Other (bare, cloud)": 0.0044
+    }
+  },
+  "largest_disagreements": [
+    {
+      "this_map": "Cropland and grassland",
+      "worldcover2021": "Forest (natural and plantation)",
+      "esri2023": "Cropland and grassland",
+      "area_km2": 747.022
+    },
+    {
+      "this_map": "Forest (natural and plantation)",
+      "worldcover2021": "Forest (natural and plantation)",
+      "esri2023": "Cropland and grassland",
+      "area_km2": 476.3668
+    },
+    {
+      "this_map": "Cropland and grassland",
+      "worldcover2021": "Cropland and grassland",
+      "esri2023": "Built-up",
+      "area_km2": 163.678
+    },
+    {
+      "this_map": "Forest (natural and plantation)",
+      "worldcover2021": "Cropland and grassland",
+      "esri2023": "Cropland and grassland",
+      "area_km2": 159.18280000000001
+    },
+    {
+      "this_map": "Cropland and grassland",
+      "worldcover2021": "Forest (natural and plantation)",
+      "esri2023": "Built-up",
+      "area_km2": 119.69200000000001
+    },
+    {
+      "this_map": "Forest (natural and plantation)",
+      "worldcover2021": "Cropland and grassland",
+      "esri2023": "Forest (natural and plantation)",
+      "area_km2": 106.46000000000001
+    },
+    {
+      "this_map": "Cropland and grassland",
+      "worldcover2021": "Forest (natural and plantation)",
+      "esri2023": "Forest (natural and plantation)",
+      "area_km2": 92.35640000000001
+    },
+    {
+      "this_map": "Cropland and grassland",
+      "worldcover2021": "Cropland and grassland",
+      "esri2023": "Forest (natural and plantation)",
+      "area_km2": 87.8392
+    }
+  ],
+  "where_worldcover_and_esri_disagree": {
+    "cells_km2": 1823.3680000000002,
+    "with_worldcover": 0.42904866159765886,
+    "with_esri": 0.49638558974381475,
+    "with_neither": 0.07456574865852642
+  },
+  "hansen": {
+    "loss_cells_km2_on_grid": 873.6972000000001,
+    "share_of_loss_2001_2024_mapped_forest_2025": 0.3468922642764564,
+    "share_of_loss_2021_2024_mapped_forest_2025": 0.34381978195192436,
+    "loss_2001_2024_by_class_km2": {
+      "Forest (natural and plantation)": 303.0788,
+      "Cropland and grassland": 562.8212,
+      "Built-up": 7.2828,
+      "Water and wetland": 0.5144000000000001
+    },
+    "treecover2000_ge30_km2": 3577.1956,
+    "treecover2000_ge30_mapped_forest_2025_km2": 2375.3804,
+    "share_mapped_forest_with_treecover2000_ge30": 0.8257314704940915
+  },
+  "lesiv2015_sites": {
+    "n_sites": 21,
+    "dominant_class_matches": 18,
+    "sites": [
+      {
+        "sampleid": 1004357,
+        "lon": 35.93786,
+        "lat": -0.31217,
+        "reference_2015_dominant": "Cropland and grassland",
+        "reference_2015_dominant_share": 0.82,
+        "map_2025_dominant": "Cropland and grassland",
+        "map_2025_dominant_share": 0.88,
+        "forest_share_reference_2015": 0.07,
+        "forest_share_map_2025": 0.04
+      },
+      {
+        "sampleid": 1005195,
+        "lon": 35.31242,
+        "lat": -0.93789,
+        "reference_2015_dominant": "Cropland and grassland",
+        "reference_2015_dominant_share": 0.87,
+        "map_2025_dominant": "Cropland and grassland",
+        "map_2025_dominant_share": 0.88,
+        "forest_share_reference_2015": 0.12,
+        "forest_share_map_2025": 0.12
+      },
+      {
+        "sampleid": 1006063,
+        "lon": 35.31224,
+        "lat": -0.62511,
+        "reference_2015_dominant": "Cropland and grassland",
+        "reference_2015_dominant_share": 1.0,
+        "map_2025_dominant": "Cropland and grassland",
+        "map_2025_dominant_share": 0.64,
+        "forest_share_reference_2015": 0.0,
+        "forest_share_map_2025": 0.36
+      },
+      {
+        "sampleid": 1006310,
+        "lon": 35.68743,
+        "lat": -0.31224,
+        "reference_2015_dominant": "Cropland and grassland",
+        "reference_2015_dominant_share": 0.77,
+        "map_2025_dominant": "Cropland and grassland",
+        "map_2025_dominant_share": 1.0,
+        "forest_share_reference_2015": 0.22,
+        "forest_share_map_2025": 0.0
+      },
+      {
+        "sampleid": 1006739,
+        "lon": 35.37508,
+        "lat": -0.56271,
+        "reference_2015_dominant": "Cropland and grassland",
+        "reference_2015_dominant_share": 0.57,
+        "map_2025_dominant": "Cropland and grassland",
+        "map_2025_dominant_share": 1.0,
+        "forest_share_reference_2015": 0.43,
+        "forest_share_map_2025": 0.0
+      },
+      {
+        "sampleid": 1006832,
+        "lon": 35.81237,
+        "lat": -0.68721,
+        "reference_2015_dominant": "Forest (natural and plantation)",
+        "reference_2015_dominant_share": 0.59,
+        "map_2025_dominant": "Forest (natural and plantation)",
+        "map_2025_dominant_share": 0.76,
+        "forest_share_reference_2015": 0.59,
+        "forest_share_map_2025": 0.76
+      },
+      {
+        "sampleid": 1007149,
+        "lon": 35.31227,
+        "lat": -0.68748,
+        "reference_2015_dominant": "Cropland and grassland",
+        "reference_2015_dominant_share": 0.77,
+        "map_2025_dominant": "Cropland and grassland",
+        "map_2025_dominant_share": 0.76,
+        "forest_share_reference_2015": 0.2,
+        "forest_share_map_2025": 0.2
+      },
+      {
+        "sampleid": 1007509,
+        "lon": 35.68745,
+        "lat": -0.3755,
+        "reference_2015_dominant": "Cropland and grassland",
+        "reference_2015_dominant_share": 0.76,
+        "map_2025_dominant": "Cropland and grassland",
+        "map_2025_dominant_share": 1.0,
+        "forest_share_reference_2015": 0.16,
+        "forest_share_map_2025": 0.0
+      },
+      {
+        "sampleid": 1009086,
+        "lon": 35.68766,
+        "lat": -0.8129,
+        "reference_2015_dominant": "Cropland and grassland",
+        "reference_2015_dominant_share": 0.92,
+        "map_2025_dominant": "Cropland and grassland",
+        "map_2025_dominant_share": 0.96,
+        "forest_share_reference_2015": 0.07,
+        "forest_share_map_2025": 0.04
+      },
+      {
+        "sampleid": 1009105,
+        "lon": 35.6877,
+        "lat": -0.87526,
+        "reference_2015_dominant": "Cropland and grassland",
+        "reference_2015_dominant_share": 0.86,
+        "map_2025_dominant": "Cropland and grassland",
+        "map_2025_dominant_share": 0.92,
+        "forest_share_reference_2015": 0.02,
+        "forest_share_map_2025": 0.08
+      },
+      {
+        "sampleid": 1009395,
+        "lon": 35.75031,
+        "lat": -0.43783,
+        "reference_2015_dominant": "Cropland and grassland",
+        "reference_2015_dominant_share": 0.68,
+        "map_2025_dominant": "Forest (natural and plantation)",
+        "map_2025_dominant_share": 0.56,
+        "forest_share_reference_2015": 0.32,
+        "forest_share_map_2025": 0.56
+      },
+      {
+        "sampleid": 1009769,
+        "lon": 35.31214,
+        "lat": -0.31233,
+        "reference_2015_dominant": "Cropland and grassland",
+        "reference_2015_dominant_share": 0.91,
+        "map_2025_dominant": "Cropland and grassland",
+        "map_2025_dominant_share": 0.88,
+        "forest_share_reference_2015": 0.04,
+        "forest_share_map_2025": 0.12
+      },
+      {
+        "sampleid": 1011113,
+        "lon": 35.9316,
+        "lat": -0.37,
+        "reference_2015_dominant": "Cropland and grassland",
+        "reference_2015_dominant_share": 0.43,
+        "map_2025_dominant": "Cropland and grassland",
+        "map_2025_dominant_share": 0.52,
+        "forest_share_reference_2015": 0.31,
+        "forest_share_map_2025": 0.44
+      },
+      {
+        "sampleid": 1011435,
+        "lon": 36.06573,
+        "lat": -0.30765,
+        "reference_2015_dominant": "Built-up",
+        "reference_2015_dominant_share": 0.82,
+        "map_2025_dominant": "Built-up",
+        "map_2025_dominant_share": 0.96,
+        "forest_share_reference_2015": 0.01,
+        "forest_share_map_2025": 0.0
+      },
+      {
+        "sampleid": 1011548,
+        "lon": 35.8751,
+        "lat": -0.50013,
+        "reference_2015_dominant": "Forest (natural and plantation)",
+        "reference_2015_dominant_share": 0.8,
+        "map_2025_dominant": "Forest (natural and plantation)",
+        "map_2025_dominant_share": 1.0,
+        "forest_share_reference_2015": 0.8,
+        "forest_share_map_2025": 1.0
+      },
+      {
+        "sampleid": 1064469,
+        "lon": 35.6249,
+        "lat": -0.93767,
+        "reference_2015_dominant": "Cropland and grassland",
+        "reference_2015_dominant_share": 1.0,
+        "map_2025_dominant": "Cropland and grassland",
+        "map_2025_dominant_share": 1.0,
+        "forest_share_reference_2015": 0.0,
+        "forest_share_map_2025": 0.0
+      },
+      {
+        "sampleid": 1064519,
+        "lon": 35.62471,
+        "lat": -0.62496,
+        "reference_2015_dominant": "Cropland and grassland",
+        "reference_2015_dominant_share": 0.91,
+        "map_2025_dominant": "Cropland and grassland",
+        "map_2025_dominant_share": 0.88,
+        "forest_share_reference_2015": 0.0,
+        "forest_share_map_2025": 0.12
+      },
+      {
+        "sampleid": 1064567,
+        "lon": 35.62549,
+        "lat": -0.31225,
+        "reference_2015_dominant": "Forest (natural and plantation)",
+        "reference_2015_dominant_share": 0.51,
+        "map_2025_dominant": "Cropland and grassland",
+        "map_2025_dominant_share": 0.56,
+        "forest_share_reference_2015": 0.51,
+        "forest_share_map_2025": 0.44
+      },
+      {
+        "sampleid": 1360783,
+        "lon": 36.09594,
+        "lat": -0.89317,
+        "reference_2015_dominant": "Cropland and grassland",
+        "reference_2015_dominant_share": 1.0,
+        "map_2025_dominant": "Cropland and grassland",
+        "map_2025_dominant_share": 1.0,
+        "forest_share_reference_2015": 0.0,
+        "forest_share_map_2025": 0.0
+      },
+      {
+        "sampleid": 1368663,
+        "lon": 35.97679,
+        "lat": -0.9166,
+        "reference_2015_dominant": "Cropland and grassland",
+        "reference_2015_dominant_share": 1.0,
+        "map_2025_dominant": "Cropland and grassland",
+        "map_2025_dominant_share": 1.0,
+        "forest_share_reference_2015": 0.0,
+        "forest_share_map_2025": 0.0
+      },
+      {
+        "sampleid": 1368726,
+        "lon": 35.39656,
+        "lat": -0.37107,
+        "reference_2015_dominant": "Cropland and grassland",
+        "reference_2015_dominant_share": 0.87,
+        "map_2025_dominant": "Forest (natural and plantation)",
+        "map_2025_dominant_share": 0.68,
+        "forest_share_reference_2015": 0.13,
+        "forest_share_map_2025": 0.68
+      }
+    ],
+    "note": "Descriptive only: 21 sites, reference year 2015, not a sample drawn from this map."
+  }
+}
