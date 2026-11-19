@@ -1,0 +1,55 @@
+{
+  "model": "random forest, 300 trees, min_samples_leaf 2, trained on all training samples",
+  "cell_km2": 0.0004,
+  "classified_cells": 19721458,
+  "box_cells": 19721764,
+  "unclassified_cells_in_box": 306,
+  "mapped": {
+    "Forest (natural and plantation)": {
+      "code": 1,
+      "cells": 7191746,
+      "area_km2": 2876.6984,
+      "share": 0.3646660404114138,
+      "mean_top_probability": 0.9388956812434699
+    },
+    "Cropland and grassland": {
+      "code": 3,
+      "cells": 11922896,
+      "area_km2": 4769.1584,
+      "share": 0.6045646320875465,
+      "mean_top_probability": 0.8906826000998416
+    },
+    "Built-up": {
+      "code": 4,
+      "cells": 477828,
+      "area_km2": 191.1312,
+      "share": 0.024228837441937608,
+      "mean_top_probability": 0.7636870589417113
+    },
+    "Water and wetland": {
+      "code": 5,
+      "cells": 128988,
+      "area_km2": 51.595200000000006,
+      "share": 0.006540490059102121,
+      "mean_top_probability": 0.9598205259403976
+    }
+  },
+  "feature_importance": {
+    "B02": 0.0475,
+    "B03": 0.0322,
+    "B04": 0.0519,
+    "B05": 0.1,
+    "B06": 0.0312,
+    "B07": 0.0479,
+    "B08": 0.0525,
+    "B8A": 0.0848,
+    "B11": 0.1154,
+    "B12": 0.1418,
+    "NDVI": 0.1079,
+    "NDWI": 0.1112,
+    "NDMI": 0.0112,
+    "NBR": 0.0304,
+    "elevation": 0.0253,
+    "slope": 0.0086
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "final": [
+    {
+      "code": 1,
+      "name": "Forest (natural and plantation)",
+      "colour": "#1f6b35"
+    },
+    {
+      "code": 3,
+      "name": "Cropland and grassland",
+      "colour": "#e8d58a"
+    },
+    {
+      "code": 4,
+      "name": "Built-up",
+      "colour": "#c0392b"
+    },
+    {
+      "code": 5,
+      "name": "Water and wetland",
+      "colour": "#2c7fb8"
+    }
+  ],
+  "dropped": {
+    "Bare": "no training cells where both maps agree in a uniform 3 x 3 neighbourhood"
+  },
+  "plantation_decision": {
+    "rule": "keep if precision and recall >= 0.7 under 10 km blocked CV (random forest)",
+    "threshold": 0.7,
+    "block_km": 10,
+    "precision": 0.8726752503576538,
+    "recall": 0.61,
+    "kept": false
+  }
+}

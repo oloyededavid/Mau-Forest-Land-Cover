@@ -1,0 +1,48 @@
+{
+  "rule": "WorldCover 2021 and Esri 2023 agree, 3 x 3 neighbourhood homogeneous, at least 3 clear observations; tree cover split by the 2015 forest management map; tree cells with Hansen loss 2021-2024 dropped",
+  "n_per_class_max": 4000,
+  "eligible_cells": {
+    "Forest": 4212672,
+    "Plantation forest": 4927,
+    "Cropland and grassland": 6563573,
+    "Built-up": 54236,
+    "Water and wetland": 108664,
+    "Bare": 0
+  },
+  "agreeing_cells_before_filters": {
+    "Forest": 4739422,
+    "Plantation forest": 10291,
+    "Cropland and grassland": 9440129,
+    "Built-up": 161914,
+    "Water and wetland": 112284,
+    "Bare": 42
+  },
+  "sampled": {
+    "Forest": 4000,
+    "Plantation forest": 4000,
+    "Cropland and grassland": 4000,
+    "Built-up": 4000,
+    "Water and wetland": 4000,
+    "Bare": 0
+  },
+  "box_cells": 19721764,
+  "share_of_box_with_agreement": 0.7334071130756863,
+  "fml_share_of_box": {
+    "0": 0.14839732389049987,
+    "11": 0.10661216714691445,
+    "20": 0.35130468045353347,
+    "31": 0.0,
+    "32": 0.0011862529132789543,
+    "40": 0.0,
+    "53": 0.39249957559577325
+  },
+  "tree_agreement_by_fml": {
+    "0": 144061,
+    "11": 2061848,
+    "20": 2741195,
+    "31": 0,
+    "32": 10470,
+    "40": 0,
+    "53": 491192
+  }
+}
