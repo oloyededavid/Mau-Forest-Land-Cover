@@ -159,21 +159,53 @@ def olofsson_by_hand(n, area):
     oa = sum(p[i][i] for i in range(q))
     ua = [n[i][i] / ni[i] for i in range(q)]
     pa = [p[j][j] / pk[j] for j in range(q)]
-    return pk, se, oa, ua, pa
+    z = 1.959963984540054
+    oa_hw = z * sum(W[i] ** 2 * ua[i] * (1 - ua[i]) / (ni[i] - 1) for i in range(q)) ** 0.5   # eq. 5
+    ua_hw = [z * (ua[i] * (1 - ua[i]) / (ni[i] - 1)) ** 0.5 for i in range(q)]                # eq. 6
+    area_hw = [z * se[k] * sum(area) for k in range(q)]                                       # eq. 10-11
+    pa_hw = []                                                                                 # eq. 7
+    for j in range(q):
+        nj = sum(W[i] / ni[i] * n[i][j] for i in range(q))                                    # estimated N.j / N
+        a = (W[j] ** 2) * ((1 - pa[j]) ** 2) * ua[j] * (1 - ua[j]) / (ni[j] - 1)
+        b = (pa[j] ** 2) * sum(W[i] ** 2 * (n[i][j] / ni[i]) * (1 - n[i][j] / ni[i]) / (ni[i] - 1)
+                               for i in range(q) if i != j)
+        pa_hw.append(z * ((a + b) / nj ** 2) ** 0.5)
+    return pk, se, oa, ua, pa, oa_hw, ua_hw, area_hw, pa_hw
 
 
 def test_olofsson_matches_a_hand_calculation():
     n = [[97, 2, 1], [3, 279, 18], [0, 1, 49]]
     area = [22353.0, 1122543.0, 610228.0]
     r = olofsson_area_estimate(n, area)
-    pk, se, oa, ua, pa = olofsson_by_hand(n, area)
+    pk, se, oa, ua, pa, oa_hw, ua_hw, area_hw, pa_hw = olofsson_by_hand(n, area)
     t = r.class_table
     assert r.overall_accuracy == pytest.approx(oa)
+    lo, hi = r.overall_accuracy_ci
+    assert (hi - lo) / 2 == pytest.approx(oa_hw)
+    assert np.allclose(t["users_ci_halfwidth"], ua_hw)
+    assert np.allclose(t["area_ci_halfwidth"], area_hw)
+    assert np.allclose(t["producers_ci_halfwidth"], pa_hw)
     assert np.allclose(t["estimated_proportion"], pk)
     assert np.allclose(t["proportion_se"], se)
     assert np.allclose(t["users_accuracy"], ua)
     assert np.allclose(t["producers_accuracy"], pa)
     assert t["estimated_area"].sum() == pytest.approx(sum(area))
+
+
+def test_rectangular_estimator_matches_the_package_when_the_extra_column_is_empty():
+    n = np.array([[97, 2, 1, 0], [3, 279, 18, 0], [0, 1, 49, 0]])
+    area = [22353.0, 1122543.0, 610228.0]
+    r = s09_accuracy.olofsson_rect(n, area)
+    t = olofsson_area_estimate(n[:, :3], area).class_table
+    for k in ("estimated_area", "area_ci_halfwidth", "users_accuracy", "users_ci_halfwidth", "producers_accuracy",
+              "producers_ci_halfwidth"):
+        assert np.allclose(np.asarray(r[k])[:3], t[k]), k
+    assert r["estimated_area"][3] == 0
+    # one reference-only point lowers user's accuracy of its stratum and gets an area of its own
+    n[1, 3] = 1; n[1, 1] -= 1
+    r2 = s09_accuracy.olofsson_rect(n, area)
+    assert r2["users_accuracy"][1] < r["users_accuracy"][1] and r2["estimated_area"][3] > 0
+    assert sum(r2["estimated_area"]) == pytest.approx(sum(area))
 
 
 def test_sample_size_follows_the_formula():
@@ -201,11 +233,17 @@ def test_accuracy_script_is_pending_until_every_point_has_a_label_then_estimates
     assert r["overall_accuracy"] == pytest.approx(1.0)
     for k in names:
         assert r["per_class"][k]["estimated_area"] == pytest.approx(mapped[k])
-    # "Bare or other" is counted with cropland and grassland
+    # "Bare or other" is a reference-only column: an error for its map class, never merged into a map class
     full.loc[1, "label"] = "Bare or other"
     r = s09_accuracy.estimate(sample, full, names, mapped)
-    i, j = names.index(sample.loc[1, "map_class"]), names.index("Cropland and grassland")
-    assert r["n_bare_or_other"] == 1 and r["error_matrix"][i][j] >= 1
+    i = names.index(sample.loc[1, "map_class"])
+    assert r["n_bare_or_other"] == 1 and r["reference_classes"][-1] == "Bare or other"
+    assert r["error_matrix"][i][-1] == 1 and r["overall_accuracy"] < 1
+    assert r["bare_or_other"]["estimated_area"] > 0
+    # duplicate ids in the labels file are refused
+    dup = pd.concat([full, full.iloc[[3]]], ignore_index=True)
+    with pytest.raises(SystemExit):
+        s09_accuracy.estimate(sample, dup, names, mapped)
     full.loc[2, "label"] = "Something else"
     with pytest.raises(SystemExit):
         s09_accuracy.estimate(sample, full, names, mapped)
@@ -287,6 +325,32 @@ def test_accuracy_output_is_pending_or_complete_and_never_invented():
 
 
 # ------------------------------------------------------------------------------------- paper and page
+
+def test_map_classes_are_not_published_on_the_site_while_labelling_is_pending():
+    if jload("accuracy.json")["status"] == "pending":
+        assert not (DOCS / "data" / "reference_sample.csv").exists()
+        assert "reference_sample.csv\" download" not in (DOCS / "index.html").read_text()
+
+
+def test_title_claims_area_estimates_only_when_they_exist():
+    status = jload("accuracy.json")["status"]
+    expected = build_paper.TITLE["complete" if status == "complete" else "pending"]
+    paper_title = re.search(r'^title: "(.*)"$', (ROOT / "paper" / "paper.md").read_text(), re.M).group(1)
+    assert paper_title == expected
+    html = (DOCS / "index.html").read_text()
+    assert f"<title>{expected}</title>" in html and f"<i>{expected}</i>" in html
+    cff = re.search(r'^title: "(.*)"$', (ROOT / "CITATION.cff").read_text(), re.M).group(1)
+    assert cff == expected, "CITATION.cff title must match the paper title"
+    if status != "complete":
+        assert "stratified area estimates for 2025" not in html
+
+
+def test_no_visible_placeholder_text_on_the_page():
+    html = (DOCS / "index.html").read_text()
+    visible = re.sub(r"<!--.*?-->", "", html, flags=re.S)
+    assert "placeholder" not in visible.lower()
+    assert "<!-- draft: author to revise -->" in html
+
 
 def test_every_template_placeholder_has_a_value():
     tpl = (ROOT / "paper" / "template.md").read_text()
