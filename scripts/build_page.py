@@ -6,7 +6,6 @@ docs/data/.
 """
 import json
 import re
-import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -44,7 +43,7 @@ def figure_html(m):
 
 
 EXPLORE = """<h3 id="explore">3.7 Interactive map</h3>
-<p>Switch between this study's map, the two maps its training labels came from, and Hansen tree cover loss, over Esri World Imagery. Drag the slider to see the imagery through the layer. The black rectangle is the study box. Layers are shown at 40 m, half the resolution of the analysis grid.</p>
+<p>Switch between this study's map, the two maps its training labels came from, and Hansen tree cover loss, over Esri World Imagery. Drag the slider to see the imagery through the layer. The black rectangle is the study box. Layers are shown at 40 m cells, coarser than the 20 m analysis grid.</p>
 <div id="xp-buttons" class="xp-buttons" role="group" aria-label="Map layer"></div>
 <p class="xp-pick"><label for="xp-opacity">Layer opacity</label> <input type="range" id="xp-opacity" min="0" max="100" value="80"></p>
 <div id="explore-map" class="lf-map" role="region" aria-label="Interactive map of the study box"></div>
@@ -97,11 +96,12 @@ def main():
 
 
 def downloads():
-    """Copy the result files offered on the page into docs/data/."""
+    """Copy the result files offered on the page into docs/data/. The reference sample with its map classes is not
+    published on the site while labelling is pending, so the labelling page stays blind per point."""
     data = ROOT / "docs" / "data"
     results = {p.stem: json.loads(p.read_text()) for p in sorted(study.OUT.glob("*.json"))}
     (data / "results.json").write_text(json.dumps(results, indent=1))
-    shutil.copyfile(study.OUT / "reference_sample.csv", data / "reference_sample.csv")
+    (data / "reference_sample.csv").unlink(missing_ok=True)
 
 
 def bbox_text():
@@ -167,7 +167,8 @@ def _web_ending(html, end):
 def _page_end(html):
     """The end of the page (key terms, data and citation, a note, feedback) lives in page_end.html next to this script."""
     end = Path(__file__).with_name("page_end.html").read_text(encoding="utf-8").strip()
-    return _web_ending(html, end.replace("{{bbox_text}}", bbox_text()))
+    title = re.search(r"<title>(.*?)</title>", html, flags=re.S).group(1).strip()
+    return _web_ending(html, end.replace("{{bbox_text}}", bbox_text()).replace("{{title}}", title))
 
 if __name__ == "__main__":
     main()

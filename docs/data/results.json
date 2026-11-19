@@ -1955,6 +1955,12 @@
    "Water and wetland": 3
   },
   "formula_sample_size_at_se_0_01": 1145,
+  "expected_users_ci_halfwidth": {
+   "Forest (natural and plantation)": 0.043229825747324035,
+   "Cropland and grassland": 0.039942385517127386,
+   "Built-up": 0.10440994859609884,
+   "Water and wetland": 0.0683523561068673
+  },
   "label_classes": [
    "Forest (natural and plantation)",
    "Cropland and grassland",
