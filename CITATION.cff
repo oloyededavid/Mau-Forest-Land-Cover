@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this analysis or its data, please cite it as below."
-title: "Mapping land cover in the Mau Forest Complex, Kenya, with Sentinel-2: a classifier tested by spatially blocked cross-validation, with stratified area estimates for 2025"
+title: "Mapping land cover in the Mau Forest Complex, Kenya, with Sentinel-2: a classifier tested by spatially blocked cross-validation, and a stratified sample design for accuracy and area estimation"
 type: software
 license:
   - MIT

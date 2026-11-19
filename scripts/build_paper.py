@@ -21,6 +21,28 @@ def load(name):
     return json.loads((OUT / name).read_text())
 
 
+TITLE_BASE = ("Mapping land cover in the Mau Forest Complex, Kenya, with Sentinel-2: a classifier tested by spatially "
+              "blocked cross-validation")
+TITLE = {"pending": TITLE_BASE + ", and a stratified sample design for accuracy and area estimation",
+         "complete": TITLE_BASE + ", with stratified area estimates for 2025"}
+
+
+def title(acc):
+    """The title claims area estimates only once the labelled reference sample has produced them."""
+    return TITLE["complete" if acc["status"] == "complete" else "pending"]
+
+
+def reweighted_precision(cm, shares):
+    """Precision when the classes occur in proportion `shares` instead of the balanced test folds.
+    cm: rows true class, columns predicted class (counts)."""
+    import numpy as np
+    cm = np.asarray(cm, dtype=float)
+    r = cm / cm.sum(axis=1, keepdims=True)          # P(predicted j | true i)
+    w = np.asarray(shares, dtype=float)
+    col = (w[:, None] * r).sum(axis=0)
+    return np.where(col > 0, w * np.diag(r) / col, 0.0)
+
+
 def need(cond, msg):
     if not cond:
         raise SystemExit("template statement no longer true: " + msg)
@@ -45,7 +67,7 @@ def long_date(iso):
 
 
 def cv_table(cv):
-    rows = ["| Scheme | Folds | Overall accuracy | Macro F1 | Forest precision | Forest recall | Plantation recall |",
+    rows = ["| Scheme | Folds | Overall agreement | Macro F1 | Forest precision | Forest recall | Plantation recall |",
             "| :--- | :--- | ---: | ---: | ---: | ---: | ---: |"]
     for scheme_key, label in (("candidate_scheme", "With plantation class"), ("final_scheme", "Final (plantation merged)")):
         res = cv[scheme_key]["results"]
@@ -96,8 +118,8 @@ def accuracy_blocks(acc, design):
                     f"{p2(v['users_accuracy'])} ± {p2(v['users_ci_halfwidth'])} | "
                     f"{p2(v['producers_accuracy'])} ± {p2(v['producers_ci_halfwidth'])} |")
     oa, ci = acc["overall_accuracy"], acc["overall_accuracy_ci95"]
-    sec = (f"From {acc['n_used']} labelled points ({acc['n_unclear']} left out as unclear, {acc['n_bare_or_other']} "
-           f"bare or other counted with cropland and grassland), overall accuracy is {p2(oa)} (95% interval "
+    sec = (f"From {acc['n_used']} labelled points ({acc['n_unclear']} left out as unclear; {acc['n_bare_or_other']} "
+           f"labelled bare or other, counted as errors of their map class), overall accuracy is {p2(oa)} (95% interval "
            f"{p2(ci[0])} to {p2(ci[1])}). Table 3 gives the stratified area estimates (Olofsson et al., 2014). The "
            "labels are one interpreter's reading of high-resolution imagery.\n\nTable 3. Accuracy and stratified "
            "area estimates from the reference sample, with 95% intervals.\n\n" + "\n".join(rows))
@@ -184,6 +206,11 @@ def build():
     small = [n for n in names if design["allocation"][n] == design["min_per_class"]]
     need(set(small) == {"Built-up", "Water and wetland"}, "the small classes are raised to the minimum")
 
+    shares = [M[n]["share"] for n in names]
+    rw = reweighted_precision(rf(fin, "block_10km")["confusion_matrix"], shares)
+    built_rw = float(rw[names.index("Built-up")])
+    need(built_rw < fpc_built_precision(fin, rf), "reweighting lowers built-up precision")
+    n_train = sum(s.values())
     years = H["loss_km2_by_year"]
     ranked = sorted(years.items(), key=lambda kv: kv[1], reverse=True)
     fold20 = rf(fin, "block_20km")["fold_overall_accuracy"]
@@ -256,9 +283,28 @@ def build():
         "allocation": ", ".join(f"{v} {k.lower()}" for k, v in design["allocation"].items()),
     }
     vals.update(accuracy_blocks(acc, design))
+    fml_s = tr["fml_share_of_box"]
+    ua_b = design["expected_users_accuracy"]["Built-up"]
+    need(side["with_neither"] < side["with_worldcover"], "the map rarely sides with neither where the maps disagree")
+    need(M["Built-up"]["area_km2"] > A["Built-up"]["worldcover2021"], "more built-up land than WorldCover")
+    vals.update({
+        "title": title(acc),
+        "plant_share_pct": f"{(fml_s['31'] + fml_s['32']) * 100:.2f}",
+        "built_prec_rw": p2(built_rw),
+        "side_neither_pct": pct(side["with_neither"]),
+        "train_forest_pct": pct((s["Forest"] + s["Plantation forest"]) / n_train),
+        "train_built_pct": pct(s["Built-up"] / n_train),
+        "built_pct": f"{M['Built-up']['share'] * 100:.1f}",
+        "ua_built": p2(ua_b), "n_built_sample": str(design["allocation"]["Built-up"]),
+        "ua_built_hw": p2(design["expected_users_ci_halfwidth"]["Built-up"]),
+    })
     return vals
 
 
+
+
+def fpc_built_precision(fin, rf):
+    return rf(fin, "block_10km")["per_class"]["Built-up"]["precision"]
 
 
 def figures():
